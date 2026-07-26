@@ -539,6 +539,21 @@ h2 { font-size: 38px; font-weight: 800; line-height: 1.15; }
 .kontakt-label { color: #6B675D; }
 .kontakt-details a, .kontakt-value { font-weight: 600; }
 .kontakt-map { width: 100%; height: 220px; border: none; border-radius: 2px; }
+.map-placeholder {
+  width: 100%;
+  height: 220px;
+  background: #EFE9DE;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  gap: 14px;
+}
+.map-placeholder[hidden] { display: none; }
+.map-placeholder-text { font-size: 13px; line-height: 1.5; color: #6B675D; max-width: 320px; margin: 0; }
 
 .kontakt-form-card { background: #EFE9DE; padding: 40px; border-radius: 2px; }
 .kontakt-form { display: grid; gap: 18px; }

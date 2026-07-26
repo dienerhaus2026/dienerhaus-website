@@ -415,7 +415,11 @@
       <div><span class="kontakt-label">Adresse: </span><span class="kontakt-value">Luitpoldstraße 10, 76751 Jockgrim</span></div>
       <div><span class="kontakt-label">Instagram: </span><a href="https://www.instagram.com/dienerhaus/" target="_blank" rel="noopener">@dienerhaus</a></div>
     </div>
-    <iframe class="kontakt-map" src="https://www.openstreetmap.org/export/embed.html?bbox=8.2692%2C49.0824%2C8.2892%2C49.1024&amp;layer=mapnik&amp;marker=49.0924%2C8.2792" loading="lazy" title="Standort DienerHaus, Luitpoldstraße 10, 76751 Jockgrim"></iframe>
+    <div class="map-placeholder" id="map-placeholder">
+      <p class="map-placeholder-text">Aus Datenschutzgründen wird die Karte erst nach Ihrer Zustimmung geladen. Dabei wird eine Verbindung zu openstreetmap.org hergestellt.</p>
+      <button type="button" id="map-load-btn" class="btn btn-dark">Karte laden</button>
+    </div>
+    <iframe class="kontakt-map" id="kontakt-map-iframe" data-src="https://www.openstreetmap.org/export/embed.html?bbox=8.2692%2C49.0824%2C8.2892%2C49.1024&amp;layer=mapnik&amp;marker=49.0924%2C8.2792" loading="lazy" title="Standort DienerHaus, Luitpoldstraße 10, 76751 Jockgrim" hidden></iframe>
   </div>
   <div class="kontakt-form-card">
     <form id="kontakt-form" class="kontakt-form">

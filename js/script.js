@@ -206,4 +206,16 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeTestimonialModal();
   });
+
+  /* ---------- Map: load only after explicit user click (privacy) ---------- */
+  var mapLoadBtn = document.getElementById('map-load-btn');
+  var mapPlaceholder = document.getElementById('map-placeholder');
+  var mapIframe = document.getElementById('kontakt-map-iframe');
+  if (mapLoadBtn && mapIframe) {
+    mapLoadBtn.addEventListener('click', function () {
+      mapIframe.src = mapIframe.getAttribute('data-src');
+      mapIframe.hidden = false;
+      if (mapPlaceholder) mapPlaceholder.hidden = true;
+    });
+  }
 })();
