@@ -60,6 +60,8 @@ h2 { font-size: 38px; font-weight: 800; line-height: 1.15; }
 .btn-primary:hover { background: #D15A38; color: #F7F4EF; }
 .btn-outline { border: 1px solid #4A473F; color: #F7F4EF; }
 .btn-outline:hover { border-color: #F7F4EF; color: #F7F4EF; }
+.btn-outline-dark { border: 1px solid #1B1A18; color: #1B1A18; }
+.btn-outline-dark:hover { background: #1B1A18; color: #F7F4EF; }
 .btn-dark { background: #1B1A18; color: #F7F4EF; }
 .btn-dark:hover { background: #BB4A2C; color: #F7F4EF; }
 
@@ -677,6 +679,68 @@ h2 { font-size: 38px; font-weight: 800; line-height: 1.15; }
 }
 .legal-notice strong { color: #1B1A18; }
 .legal-back { font-size: 14px; font-weight: 600; }
+
+/* ============ Bewertung (valuation page) ============ */
+.bewertung-method-title { font-size: 21px; font-weight: 800; margin: 44px 0 4px; }
+.bewertung-table { width: 100%; border-collapse: collapse; margin: 20px 0 8px; max-width: 760px; }
+.bewertung-table th, .bewertung-table td { text-align: left; padding: 14px 16px 14px 0; font-size: 15px; color: #3A372F; }
+.bewertung-table thead th {
+  font-size: 12px; letter-spacing: 0.5px; text-transform: uppercase; color: #6B675D;
+  border-bottom: 1px solid #E6E0D6; padding-bottom: 10px;
+}
+.bewertung-table tbody tr { border-bottom: 1px solid #E6E0D6; }
+.bewertung-table td.num, .bewertung-table th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bewertung-table .bewertung-total-row td {
+  font-weight: 800; font-size: 17px; color: #1B1A18; padding-top: 18px; border-top: 2px solid #1B1A18; border-bottom: none;
+}
+.bewertung-summary-box {
+  background: #1B1A18; color: #F7F4EF; border-radius: 2px; padding: 36px 40px; margin: 40px 0 28px; max-width: 760px;
+}
+.bewertung-summary-label { font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: #C97B5E; margin-bottom: 8px; }
+.bewertung-price { font-size: 40px; font-weight: 800; color: #F7F4EF; }
+.bewertung-summary-range { font-size: 14.5px; line-height: 1.6; color: #C9C5B9; margin-top: 12px; max-width: 600px; }
+
+@media (max-width: 860px) {
+  .bewertung-summary-box { padding: 28px 24px; }
+  .bewertung-price { font-size: 32px; }
+  .bewertung-table th, .bewertung-table td { padding: 12px 10px 12px 0; font-size: 14px; }
+}
+
+.print-header { display: none; }
+
+@media print {
+  @page { margin: 16mm 18mm; }
+  .nav, .footer, #cookie-banner, .verkauf-ctas, .legal-back { display: none !important; }
+  body { background: #fff; }
+  .print-header {
+    display: flex; align-items: baseline; gap: 16px;
+    border-bottom: 2px solid #1B1A18; padding: 0 0 14px; margin: 0 0 28px;
+  }
+  .print-header-logo { font-size: 20px; font-weight: 800; letter-spacing: 0.5px; }
+  .print-header-sub { font-size: 13px; color: #6B675D; }
+  .section { padding: 0; max-width: 100%; }
+  .legal-section { padding-top: 0; }
+  a { color: inherit; text-decoration: none; }
+  h2 { font-size: 28px; margin-bottom: 4px; }
+  h3.bewertung-method-title { font-size: 17px; margin: 22px 0 4px; }
+  .body-copy { font-size: 14px; line-height: 1.55; margin-bottom: 12px; }
+  .verkauf-facts { margin-bottom: 4px !important; row-gap: 12px !important; }
+  h2, h3 { page-break-after: avoid; }
+  .bewertung-table { page-break-inside: avoid; margin: 14px 0 4px; }
+  .bewertung-table tr, .bewertung-summary-box, .legal-notice { page-break-inside: avoid; }
+  .bewertung-table th, .bewertung-table td { padding: 10px 14px 10px 0; font-size: 13.5px; }
+  .bewertung-summary-box { margin: 18px 0 14px; padding: 22px 26px; }
+  .bewertung-price { font-size: 32px; }
+  .legal-notice { margin: 14px 0 8px; padding: 14px 18px; font-size: 12px; line-height: 1.55; }
+  .bewertung-summary-box {
+    background: #1B1A18 !important; color: #F7F4EF !important;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .legal-notice, .verkauf-facts > div span.verkauf-fact-label {
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .eyebrow, .bewertung-summary-label { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
 
 /* ============ Responsive (breakpoint 860px) ============ */
 @media (max-width: 860px) {
