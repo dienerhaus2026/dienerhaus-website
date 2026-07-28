@@ -40,12 +40,37 @@
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
+  /* ---------- Lazy-load background images ---------- */
+  var lazyBgEls = document.querySelectorAll('.lazy-bg');
+  function applyBg(el) {
+    var url = el.getAttribute('data-bg');
+    if (url) el.style.backgroundImage = "url('" + url + "')";
+  }
+  if ('IntersectionObserver' in window) {
+    var bgIo = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            applyBg(entry.target);
+            bgIo.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '200px 0px' }
+    );
+    lazyBgEls.forEach(function (el) { bgIo.observe(el); });
+  } else {
+    lazyBgEls.forEach(applyBg);
+  }
+
   /* ---------- Hero video (only render if a real src is supplied) ---------- */
   var heroVideo = document.getElementById('hero-video');
-  var HERO_VIDEO_SRC = ''; // set to the real hero video URL once supplied by the client
+  var heroPlaceholder = document.querySelector('.hero-placeholder-label');
+  var HERO_VIDEO_SRC = 'assets/hero-maximilianstrasse-wandel.mp4';
   if (heroVideo && HERO_VIDEO_SRC) {
     heroVideo.src = HERO_VIDEO_SRC;
     heroVideo.style.display = 'block';
+    if (heroPlaceholder) heroPlaceholder.style.display = 'none';
   }
 
   /* ---------- Financing calculator ---------- */
@@ -140,38 +165,64 @@
 
   recalc();
 
-  /* ---------- Contact form (no backend wired yet) ---------- */
+  /* ---------- Contact form ---------- */
+  var KONTAKT_ENDPOINT = 'https://dienerhaus-contact.crimson-shape-0175.workers.dev';
+
   var kontaktForm = document.getElementById('kontakt-form');
+  var kontaktStatus = document.getElementById('kontakt-form-status');
+
+  function openMailtoFallback() {
+    var name = encodeURIComponent(kontaktForm.name.value);
+    var email = encodeURIComponent(kontaktForm.email.value);
+    var message = encodeURIComponent(kontaktForm.message.value);
+    var body = 'Name: ' + name + '%0D%0AE-Mail: ' + email + '%0D%0A%0D%0A' + message;
+    window.location.href = 'mailto:info@dienerhaus.de?subject=Kontaktanfrage%20von%20der%20Website&body=' + body;
+  }
+
+  function setStatus(text, kind) {
+    if (!kontaktStatus) return;
+    kontaktStatus.textContent = text;
+    kontaktStatus.classList.remove('is-success', 'is-error');
+    if (kind) kontaktStatus.classList.add(kind);
+  }
+
   if (kontaktForm) {
     kontaktForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      var name = encodeURIComponent(kontaktForm.name.value);
-      var email = encodeURIComponent(kontaktForm.email.value);
-      var message = encodeURIComponent(kontaktForm.message.value);
-      var body = 'Name: ' + name + '%0D%0AE-Mail: ' + email + '%0D%0A%0D%0A' + message;
-      window.location.href = 'mailto:info@dienerhaus.de?subject=Kontaktanfrage%20von%20der%20Website&body=' + body;
+      var submitBtn = kontaktForm.querySelector('button[type="submit"]');
+      var payload = {
+        name: kontaktForm.name.value,
+        email: kontaktForm.email.value,
+        message: kontaktForm.message.value,
+        _hp: kontaktForm._hp.value
+      };
+
+      if (submitBtn) submitBtn.disabled = true;
+      setStatus('Wird gesendet …', null);
+
+      fetch(KONTAKT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error('send_failed');
+          return res.json();
+        })
+        .then(function (data) {
+          if (!data || !data.ok) throw new Error('send_failed');
+          setStatus('Danke für Ihre Nachricht! Wir melden uns zeitnah bei Ihnen.', 'is-success');
+          kontaktForm.reset();
+        })
+        .catch(function () {
+          setStatus('Senden nicht möglich — es öffnet sich stattdessen Ihr E-Mail-Programm.', 'is-error');
+          openMailtoFallback();
+        })
+        .finally(function () {
+          if (submitBtn) submitBtn.disabled = false;
+        });
     });
   }
-
-  /* ---------- Cookie consent banner ---------- */
-  var COOKIE_KEY = 'dienerhaus_cookie_choice';
-  var cookieBanner = document.getElementById('cookie-banner');
-  var cookieAccept = document.getElementById('cookie-accept');
-  var cookieDecline = document.getElementById('cookie-decline');
-
-  function getCookieChoice() {
-    try { return localStorage.getItem(COOKIE_KEY); } catch (e) { return null; }
-  }
-  function setCookieChoice(choice) {
-    try { localStorage.setItem(COOKIE_KEY, choice); } catch (e) { /* storage unavailable */ }
-    if (cookieBanner) cookieBanner.hidden = true;
-  }
-
-  if (cookieBanner && !getCookieChoice()) {
-    cookieBanner.hidden = false;
-  }
-  if (cookieAccept) cookieAccept.addEventListener('click', function () { setCookieChoice('accepted'); });
-  if (cookieDecline) cookieDecline.addEventListener('click', function () { setCookieChoice('declined'); });
 
   /* ---------- Testimonial "read full review" modal ---------- */
   var testimonialOverlay = document.getElementById('testimonial-modal-overlay');
@@ -179,22 +230,37 @@
   var testimonialAuthor = document.getElementById('testimonial-modal-author');
   var testimonialCloseBtn = document.getElementById('testimonial-modal-close');
 
-  function openTestimonialModal(key) {
+  var testimonialLastTrigger = null;
+
+  function getFocusableInModal() {
+    return Array.prototype.slice.call(
+      testimonialOverlay.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])')
+    ).filter(function (el) { return !el.hidden && el.offsetParent !== null; });
+  }
+
+  function openTestimonialModal(key, triggerEl) {
     var textTemplate = document.getElementById('testimonial-full-' + key);
     var authorTemplate = document.getElementById('testimonial-full-' + key + '-author');
     if (!textTemplate || !testimonialOverlay) return;
+    testimonialLastTrigger = triggerEl || document.activeElement;
     testimonialBody.innerHTML = '';
     testimonialBody.appendChild(textTemplate.content.cloneNode(true));
     testimonialAuthor.textContent = authorTemplate ? authorTemplate.content.textContent.trim() : '';
     testimonialOverlay.hidden = false;
+    if (testimonialCloseBtn) testimonialCloseBtn.focus();
   }
   function closeTestimonialModal() {
-    if (testimonialOverlay) testimonialOverlay.hidden = true;
+    if (!testimonialOverlay || testimonialOverlay.hidden) return;
+    testimonialOverlay.hidden = true;
+    if (testimonialLastTrigger && typeof testimonialLastTrigger.focus === 'function') {
+      testimonialLastTrigger.focus();
+    }
+    testimonialLastTrigger = null;
   }
 
   document.querySelectorAll('.testimonial-more').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      openTestimonialModal(btn.getAttribute('data-testimonial'));
+      openTestimonialModal(btn.getAttribute('data-testimonial'), btn);
     });
   });
   if (testimonialCloseBtn) testimonialCloseBtn.addEventListener('click', closeTestimonialModal);
@@ -204,7 +270,24 @@
     });
   }
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeTestimonialModal();
+    if (!testimonialOverlay || testimonialOverlay.hidden) return;
+    if (e.key === 'Escape') {
+      closeTestimonialModal();
+      return;
+    }
+    if (e.key === 'Tab') {
+      var focusable = getFocusableInModal();
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   });
 
   /* ---------- Map: load only after explicit user click (privacy) ---------- */

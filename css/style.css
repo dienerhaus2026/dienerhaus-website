@@ -1,3 +1,12 @@
+/* ============ Fonts ============ */
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../assets/fonts/Fraunces-Variable-Latin.woff2') format('woff2');
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ============ Reset & Base ============ */
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -8,6 +17,10 @@ body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   min-height: 100vh;
   overflow-wrap: break-word;
+}
+h1, h2, h3, .logo-text, .footer-logo-text, .verkauf-name {
+  font-family: 'Fraunces', Georgia, serif;
+  font-optical-sizing: auto;
 }
 a { color: #BB4A2C; text-decoration: none; transition: color 0.2s ease; }
 a:hover { color: #93391E; }
@@ -75,6 +88,8 @@ h2 { font-size: 38px; font-weight: 800; line-height: 1.15; }
   opacity: 1;
   transform: none;
 }
+
+section[id], #top { scroll-margin-top: 96px; }
 
 /* ============ Nav ============ */
 .nav {
@@ -248,8 +263,13 @@ h2 { font-size: 38px; font-weight: 800; line-height: 1.15; }
   transform: translateY(-6px);
   box-shadow: 0 16px 32px rgba(27, 26, 24, 0.08);
 }
-.accent-block { width: 40px; height: 40px; background: #1B1A18; margin-bottom: 24px; }
-.leistung-title { font-size: 18px; font-weight: 700; margin-bottom: 12px; overflow-wrap: break-word; }
+.accent-icon {
+  width: 44px; height: 44px; margin-bottom: 24px; border-radius: 2px;
+  background: rgba(187, 74, 44, 0.09);
+  display: flex; align-items: center; justify-content: center;
+}
+.accent-icon svg { width: 24px; height: 24px; color: #BB4A2C; }
+.leistung-title { font-size: 18px; font-weight: 700; margin-bottom: 12px; overflow-wrap: break-word; hyphens: auto; }
 .leistung-desc { font-size: 14.5px; line-height: 1.6; color: #5F5B52; overflow-wrap: break-word; }
 
 /* ============ Zum Verkauf ============ */
@@ -264,6 +284,7 @@ h2 { font-size: 38px; font-weight: 800; line-height: 1.15; }
   aspect-ratio: 4/3;
   background-size: cover;
   background-position: center;
+  background-color: #E6E0D6;
   border-radius: 2px;
   min-width: 0;
 }
@@ -316,6 +337,7 @@ h2 { font-size: 38px; font-weight: 800; line-height: 1.15; }
   aspect-ratio: 4/3;
   background-size: cover;
   background-position: center;
+  background-color: #E6E0D6;
   margin-bottom: 18px;
   border-radius: 2px;
 }
@@ -579,7 +601,12 @@ h2 { font-size: 38px; font-weight: 800; line-height: 1.15; }
   cursor: pointer;
 }
 .kontakt-form button:hover { background: #BB4A2C; }
+.kontakt-form button:disabled { opacity: 0.6; cursor: not-allowed; }
 .kontakt-form-note { font-size: 13px; color: #6B675D; margin-top: 4px; }
+.kontakt-form-status { font-size: 14px; margin: 0; min-height: 20px; }
+.kontakt-form-status.is-success { color: #3E6B4A; }
+.kontakt-form-status.is-error { color: #BB4A2C; }
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
 /* ============ Karriere ============ */
 .karriere-section { text-align: center; }
@@ -604,37 +631,6 @@ h2 { font-size: 38px; font-weight: 800; line-height: 1.15; }
 .footer-links a { color: #C9C4B8; }
 .footer-links a:hover { color: #F7F4EF; }
 .footer-copyright { font-size: 13px; color: #6B675D; }
-
-/* ============ Cookie banner ============ */
-.cookie-banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  background: #1B1A18;
-  color: #F7F4EF;
-  padding: 24px 56px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.15);
-}
-.cookie-banner[hidden] { display: none; }
-.cookie-text { font-size: 14px; color: #C9C4B8; max-width: 640px; }
-.cookie-text a { color: #C97B5E; }
-.cookie-actions { display: flex; gap: 12px; }
-.cookie-btn {
-  padding: 12px 24px;
-  font-weight: 600;
-  font-size: 14px;
-  border-radius: 2px;
-  cursor: pointer;
-}
-.cookie-btn-outline { background: transparent; border: 1px solid #4A473F; color: #F7F4EF; }
-.cookie-btn-filled { background: #BB4A2C; border: none; color: #F7F4EF; }
 
 /* ============ Legal pages ============ */
 .legal-section { padding-top: 64px; }
@@ -710,7 +706,7 @@ h2 { font-size: 38px; font-weight: 800; line-height: 1.15; }
 
 @media print {
   @page { margin: 16mm 18mm; }
-  .nav, .footer, #cookie-banner, .verkauf-ctas, .legal-back { display: none !important; }
+  .nav, .footer, .verkauf-ctas, .legal-back { display: none !important; }
   body { background: #fff; }
   .print-header {
     display: flex; align-items: baseline; gap: 16px;
@@ -780,4 +776,8 @@ h2 { font-size: 38px; font-weight: 800; line-height: 1.15; }
 
   h2 { font-size: 30px; }
   .hero-text h1 { font-size: 38px; }
+}
+
+@media (max-width: 560px) {
+  .leistungen-grid { grid-template-columns: 1fr; }
 }

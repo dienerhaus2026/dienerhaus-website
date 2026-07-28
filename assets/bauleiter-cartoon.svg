@@ -1,0 +1,64 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Karikatur eines Bauleiters mit Helm und Schnurrbart">
+  <circle cx="100" cy="100" r="100" fill="#EFE1D3"/>
+
+  <!-- high-vis vest / shoulders -->
+  <path d="M40 200 C40 155 65 140 100 140 C135 140 160 155 160 200 Z" fill="#F2A65A"/>
+  <path d="M78 145 L100 200 L86 200 L64 148 Z" fill="#E6E0D6"/>
+  <path d="M122 145 L100 200 L114 200 L136 148 Z" fill="#E6E0D6"/>
+  <circle cx="100" cy="162" r="5" fill="#4A473F"/>
+  <circle cx="100" cy="180" r="5" fill="#4A473F"/>
+
+  <!-- neck -->
+  <rect x="86" y="118" width="28" height="26" rx="10" fill="#E3A876"/>
+
+  <!-- head -->
+  <ellipse cx="100" cy="98" rx="46" ry="44" fill="#EFB37E"/>
+
+  <!-- ears -->
+  <circle cx="55" cy="100" r="8" fill="#EFB37E"/>
+  <circle cx="145" cy="100" r="8" fill="#EFB37E"/>
+
+  <!-- pencil behind ear -->
+  <rect x="142" y="70" width="7" height="34" rx="2" fill="#D9822B" transform="rotate(18 145 87)"/>
+  <rect x="142" y="70" width="7" height="8" rx="2" fill="#4A473F" transform="rotate(18 145 87)"/>
+
+  <!-- eyebrows -->
+  <path d="M72 90 Q80 84 90 89" stroke="#5B3A21" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M110 89 Q120 84 128 90" stroke="#5B3A21" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- eyes -->
+  <circle cx="82" cy="98" r="4.5" fill="#2A2620"/>
+  <circle cx="118" cy="98" r="4.5" fill="#2A2620"/>
+
+  <!-- rosy cheeks -->
+  <circle cx="70" cy="112" r="7" fill="#E8895E" opacity="0.45"/>
+  <circle cx="130" cy="112" r="7" fill="#E8895E" opacity="0.45"/>
+
+  <!-- nose -->
+  <path d="M98 100 Q94 110 100 113 Q104 113 102 108" fill="#E3A876"/>
+
+  <!-- mustache -->
+  <path d="M70 118 Q85 106 100 118 Q115 106 130 118 Q118 132 100 122 Q82 132 70 118 Z" fill="#3B2A1E"/>
+
+  <!-- big grin -->
+  <path d="M84 124 Q100 138 116 124 Q100 132 84 124 Z" fill="#7A2E1D"/>
+  <path d="M90 126 Q100 132 110 126" stroke="#F7F4EF" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- hard hat brim -->
+  <path d="M48 76 Q100 58 152 76 Q140 84 100 84 Q60 84 48 76 Z" fill="#E8A317"/>
+  <!-- hard hat dome -->
+  <path d="M56 78 C56 40 144 40 144 78 C144 82 130 84 100 84 C70 84 56 82 56 78 Z" fill="#F4BC3A"/>
+  <path d="M100 44 C100 44 100 60 100 78" stroke="#D9822B" stroke-width="3" fill="none"/>
+  <path d="M68 50 Q100 40 132 50" stroke="#D9822B" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- sunglasses pushed up on brim -->
+  <rect x="72" y="66" width="22" height="12" rx="6" fill="#2A2620"/>
+  <rect x="106" y="66" width="22" height="12" rx="6" fill="#2A2620"/>
+  <rect x="94" y="70" width="12" height="4" rx="2" fill="#2A2620"/>
+
+  <!-- clipboard peeking in at the bottom -->
+  <rect x="146" y="176" width="34" height="24" rx="2" fill="#F7F4EF" transform="rotate(-10 163 188)"/>
+  <rect x="150" y="180" width="26" height="3" fill="#BB4A2C" transform="rotate(-10 163 188)"/>
+  <rect x="150" y="186" width="20" height="3" fill="#B8B2A4" transform="rotate(-10 163 188)"/>
+  <rect x="150" y="192" width="22" height="3" fill="#B8B2A4" transform="rotate(-10 163 188)"/>
+</svg>
