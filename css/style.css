@@ -114,9 +114,29 @@ section[id], #top { scroll-margin-top: 96px; }
 .logo-thin { font-weight: 400; color: #4A473F; }
 .logo-bar { width: 46px; height: 2px; background: #BB4A2C; }
 
-.nav-links { display: flex; align-items: center; gap: 28px; }
-.nav-links a { font-size: 14px; color: #1B1A18; font-weight: 500; }
+.nav-links { display: flex; align-items: center; gap: 22px; }
+.nav-links a { font-size: 14px; color: #1B1A18; font-weight: 600; white-space: nowrap; }
 .nav-links a:hover { color: #BB4A2C; }
+
+@keyframes navItemIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.nav-links a, .logo {
+  animation: navItemIn 0.45s ease both;
+}
+.logo { animation-delay: 0.05s; }
+.nav-links a:nth-child(1) { animation-delay: 0.15s; }
+.nav-links a:nth-child(2) { animation-delay: 0.22s; }
+.nav-links a:nth-child(3) { animation-delay: 0.29s; }
+.nav-links a:nth-child(4) { animation-delay: 0.36s; }
+.nav-links a:nth-child(5) { animation-delay: 0.43s; }
+.nav-links a:nth-child(6) { animation-delay: 0.50s; }
+.nav-links a:nth-child(7) { animation-delay: 0.57s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-links a, .logo { animation: none; }
+}
 .btn-nav {
   font-size: 14px;
   padding: 10px 22px;
