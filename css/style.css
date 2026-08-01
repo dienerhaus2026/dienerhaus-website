@@ -18,7 +18,7 @@ body {
   min-height: 100vh;
   overflow-wrap: break-word;
 }
-h1, h2, h3, .logo-text, .footer-logo-text, .verkauf-name {
+h1, h2, h3, .verkauf-name {
   font-family: 'Fraunces', Georgia, serif;
   font-optical-sizing: auto;
 }
