@@ -214,6 +214,9 @@ section[id], #top { scroll-margin-top: 96px; }
   border-radius: 2px;
 }
 .hero-visual video { width: 100%; height: 100%; object-fit: cover; }
+/* Hochkant-Video (9:16) vollständig im dunklen Hero-Feld zeigen */
+.hero-visual--video { min-height: 440px; }
+.hero-visual--video video { width: 100%; height: 100%; object-fit: contain; display: block; }
 .hero-placeholder-label {
   position: absolute;
   font-family: monospace;
