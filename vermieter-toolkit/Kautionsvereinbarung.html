@@ -1,0 +1,220 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kautionsvereinbarung | Vermieter-Toolkit</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --cream2:#F1E9DA; --paper:#FFFFFF;
+    --terra:#BB4A2C; --terra-d:#8A421684; --terra-dark:#93391E;
+    --ink:#33302B; --ink-soft:#5C564E; --line:#E3D8C6;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+    font-size:15px;line-height:1.5;}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:600;color:var(--terra-dark);margin:0 0 .3em;}
+  .wrap{max-width:900px;margin:0 auto;padding:24px 18px 60px;}
+  header.top{border-bottom:2px solid var(--terra);padding-bottom:14px;margin-bottom:8px;}
+  header.top .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);font-weight:700;}
+  header.top h1{font-size:28px;margin-top:4px;}
+  header.top .brand{font-family:Georgia,serif;font-size:15px;color:var(--ink-soft);font-weight:600;float:right;margin-top:2px;}
+  header.top p{margin:.3em 0 0;color:var(--ink-soft);max-width:80ch;}
+  .disclaimer{background:#FBEbdc;border:1px solid var(--terra);border-left:5px solid var(--terra);
+    border-radius:6px;padding:12px 16px;margin:18px 0;font-size:13px;color:var(--terra-dark);}
+  .disclaimer strong{font-weight:700;}
+  .panel{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:16px 0;
+    box-shadow:0 1px 2px rgba(90,60,30,.05);}
+  .panel h2{font-size:18px;margin-bottom:12px;}
+  .clause{font-size:13.5px;color:var(--ink);line-height:1.6;margin:0 0 10px;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;}
+  .grid.three{grid-template-columns:1fr 1fr 1fr;}
+  .fld{display:flex;flex-direction:column;gap:4px;}
+  .fld.wide{grid-column:1/-1;}
+  .fld label{font-size:12.5px;font-weight:600;color:var(--ink-soft);}
+  .fld .hint{font-size:11px;color:var(--ink-soft);font-weight:400;}
+  input,select,textarea{font:inherit;padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);width:100%;}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--terra);outline-offset:0;}
+  .calc{background:var(--cream2);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:4px 0 12px;}
+  .calc .row{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px 12px;}
+  .calc .cell{display:flex;flex-direction:column;gap:4px;}
+  .calc .cell label{font-size:11.5px;font-weight:600;color:var(--ink-soft);}
+  .calc .cell.small{max-width:110px;}
+  .calc input{background:#fff;}
+  .calc .op{font-size:20px;font-weight:700;color:var(--terra);padding-bottom:8px;}
+  .calc .res input{font-weight:700;color:var(--terra-dark);background:#fff;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  thead th{background:var(--cream2);text-align:left;padding:9px 8px;border-bottom:2px solid var(--terra-d);
+    font-size:12px;color:var(--terra-dark);vertical-align:bottom;}
+  tbody td{padding:5px 8px;border-bottom:1px solid var(--line);vertical-align:middle;}
+  tbody td input{background:#fff;}
+  .sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 40px;margin-top:10px;}
+  .sig{display:flex;flex-direction:column;gap:6px;}
+  .sig .line{border-bottom:1px solid var(--ink);height:34px;}
+  .sig .cap{font-size:12px;color:var(--ink-soft);}
+  .btn{font:inherit;font-weight:600;border:1px solid var(--terra);background:var(--terra);color:#fff;
+    padding:9px 16px;border-radius:7px;cursor:pointer;}
+  .btn:hover{background:var(--terra-dark);}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0;}
+  footer{margin-top:30px;font-size:12px;color:var(--ink-soft);text-align:center;border-top:1px solid var(--line);padding-top:14px;}
+  .tablescroll{overflow-x:auto;}
+  .print-only{display:none;}
+  @media(max-width:640px){header.top h1{font-size:23px}.grid,.grid.three,.sig-grid{grid-template-columns:1fr}}
+  @media print{
+    @page{size:A4;margin:18mm 20mm;}
+    body{background:#fff;color:#000;font-size:12px;}
+    .wrap{max-width:none;padding:0;}
+    h1,h2,h3{color:#000;}
+    header.top{border-bottom:1px solid #000;margin-bottom:4px;}
+    header.top .kicker,header.top .brand{color:#000;}
+    .panel{background:#fff;border:1px solid #999;box-shadow:none;break-inside:avoid;margin:10px 0;padding:12px 14px;}
+    thead th{background:#fff;color:#000;border-bottom:1.5px solid #000;}
+    tbody td{border-bottom:1px solid #999;}
+    input,select,textarea{background:#fff;border:1px solid #999;color:#000;}
+    input[type=checkbox],input[type=radio]{accent-color:#000!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .calc{background:#fff;border:1px solid #999;}
+    .calc .op{color:#000;}
+    .calc .res input{color:#000;}
+    .screen-only,.toggle-ctrl,.disclaimer,.hint,.hintbox,.lawbox,.toolbar,.noprint{display:none!important;}
+    .print-only{display:inline!important;}
+    footer{border-top:1px solid #000;color:#000;font-size:10px;text-align:center;margin-top:16px;padding-top:8px;}
+    h1,h2,h3{break-after:avoid;}
+    header.top{break-after:avoid;}
+    .panel,.sig-grid,.sig,.fld,tr{break-inside:avoid;}
+  }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <span class="brand">DienerHaus</span>
+    <div class="kicker">Vermieter-Toolkit &middot; DienerHaus</div>
+    <h1>Kautionsvereinbarung</h1>
+    <p>Vereinbarung über die Mietsicherheit (Kaution) als Anlage zum Wohnraummietvertrag. Regelt Höhe,
+       Ratenzahlung, insolvenzfeste Anlage und Rückzahlung der Kaution.</p>
+  </header>
+
+  <div class="disclaimer screen-only">
+    <strong>Hinweis:</strong> Unverbindliche Mustervorlage, <strong>keine Rechtsberatung</strong>. Nutzung auf eigene
+    Gefahr; im Zweifel anwaltlich prüfen lassen. Diese Vorlage wird kostenlos und unverbindlich zur Verfügung gestellt.
+    Für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit sowie für Vorsatz und grobe
+    Fahrlässigkeit haften wir nach den gesetzlichen Bestimmungen; ebenso bei der Verletzung wesentlicher
+    Vertragspflichten. Im Übrigen ist die Haftung ausgeschlossen.
+    <strong>Höchstens drei Nettokaltmieten (&sect; 551 Abs. 1 BGB). Maßgeblich ist die Nettokaltmiete OHNE
+    Betriebskosten und OHNE Heizkosten &mdash; nicht die Warm- oder Gesamtmiete. Höhere Beträge sind unwirksam.</strong>
+    <strong>Stand: 08/2026.</strong>
+  </div>
+
+  <div class="panel">
+    <h2>1 &middot; Parteien &amp; Objektbezug</h2>
+    <div class="grid">
+      <div class="fld"><label for="verm">Vermieter / Eigentümer (Name)</label><input id="verm" type="text"></div>
+      <div class="fld"><label for="miet">Mieter (Name/n)</label><input id="miet" type="text"></div>
+      <div class="fld wide"><label for="obj">Mietobjekt / Anschrift der Wohnung (Straße, Hausnummer, PLZ, Ort)</label><input id="obj" type="text"></div>
+      <div class="fld"><label for="lage">Lage / Etage / Wohnungsnr.</label><input id="lage" type="text"></div>
+      <div class="fld"><label for="mvdat">Datum des zugrunde liegenden Mietvertrags</label><input id="mvdat" type="date"></div>
+    </div>
+    <p class="clause" style="margin-top:12px">Diese Vereinbarung ist Bestandteil des vorbezeichneten Wohnraummietvertrags.
+       Der Mieter leistet dem Vermieter zur Sicherung aller Ansprüche aus dem Mietverhältnis die nachstehend
+       vereinbarte Barkaution.</p>
+  </div>
+
+  <div class="panel">
+    <h2>2 &middot; Höhe der Kaution</h2>
+    <p class="clause">Berechnungshilfe &ndash; die Kaution darf höchstens das Dreifache der Nettokaltmiete
+       (ohne Betriebs- und Heizkosten) betragen:</p>
+    <div class="calc">
+      <div class="row">
+        <div class="cell">
+          <label for="nkm">Nettokaltmiete (&euro;)</label>
+          <input id="nkm" type="number" min="0" step="0.01" inputmode="decimal">
+        </div>
+        <div class="op">&times;</div>
+        <div class="cell small">
+          <label for="faktor">Faktor (max. 3)</label>
+          <input id="faktor" type="number" min="0" max="3" step="0.5" value="3">
+        </div>
+        <div class="op">=</div>
+        <div class="cell res">
+          <label for="kaution">Kautionsbetrag (&euro;)</label>
+          <input id="kaution" type="text" readonly>
+        </div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="fld"><label for="anzahl">entspricht ___ Nettokaltmieten</label><input id="anzahl" type="text" placeholder="z. B. 3"></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>3 &middot; Ratenzahlung</h2>
+    <p class="clause">Der Mieter ist berechtigt, die Kaution in drei gleichen Monatsraten zu leisten. Die erste Rate
+       ist zu Beginn des Mietverhältnisses fällig, die weiteren jeweils mit den folgenden Mietzahlungen.</p>
+    <div class="tablescroll">
+    <table>
+      <thead><tr><th style="min-width:120px">Rate</th><th>Betrag (&euro;)</th><th>Fällig am</th></tr></thead>
+      <tbody>
+        <tr><td>1. Rate</td><td><input type="text" aria-label="Betrag 1. Rate"></td><td><input type="date" aria-label="Fälligkeit 1. Rate"></td></tr>
+        <tr><td>2. Rate</td><td><input type="text" aria-label="Betrag 2. Rate"></td><td><input type="date" aria-label="Fälligkeit 2. Rate"></td></tr>
+        <tr><td>3. Rate</td><td><input type="text" aria-label="Betrag 3. Rate"></td><td><input type="date" aria-label="Fälligkeit 3. Rate"></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>4 &middot; Anlage der Kaution</h2>
+    <p class="clause">Der Vermieter legt die Kaution getrennt von seinem eigenen Vermögen und insolvenzfest bei einem
+       Kreditinstitut zu dem für Spareinlagen mit dreimonatiger Kündigungsfrist üblichen Zinssatz an. Die Zinserträge
+       stehen dem Mieter zu und erhöhen die Sicherheit.</p>
+  </div>
+
+  <div class="panel">
+    <h2>5 &middot; Rückzahlung</h2>
+    <p class="clause">Der Vermieter zahlt die Kaution einschließlich der Zinsen nach Beendigung des Mietverhältnisses und
+       Rückgabe der Wohnung binnen angemessener Frist zurück, längstens nach Abrechnung der letzten
+       Betriebskostenperiode. Der Vermieter darf einen angemessenen Teil zur Deckung noch nicht abgerechneter
+       Betriebskosten zurückbehalten.</p>
+    <div class="fld"><span class="hint">üblicher Korridor 3&ndash;6 Monate; keine feste Tageszahl vereinbaren.</span></div>
+  </div>
+
+  <div class="panel">
+    <h2>6 &middot; Unterschriften</h2>
+    <p class="clause" style="margin-top:-2px">Ort, Datum sowie Unterschrift beider Parteien.</p>
+    <div class="sig-grid">
+      <div class="sig">
+        <div class="line"></div><div class="cap">Ort, Datum &mdash; Vermieter / Eigentümer</div>
+        <div class="line" style="margin-top:14px"></div><div class="cap">Unterschrift Vermieter</div>
+      </div>
+      <div class="sig">
+        <div class="line"></div><div class="cap">Ort, Datum &mdash; Mieter</div>
+        <div class="line" style="margin-top:14px"></div><div class="cap">Unterschrift Mieter</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toolbar noprint screen-only">
+    <button class="btn" onclick="window.print()">Drucken / als PDF speichern</button>
+  </div>
+
+  <footer>
+    <span class="screen-only"><strong>Stand: 08/2026</strong> &middot; Muster ohne Gewähr &ndash; kein Ersatz für Rechtsberatung. Vollständiger Hinweis siehe oben.<br>
+    &copy; DienerHaus GmbH &middot; dienerhaus.de</span>
+    <span class="print-only">Muster ohne Gew&auml;hr &middot; Stand 08/2026 &middot; DienerHaus</span>
+  </footer>
+</div>
+
+<script>
+"use strict";
+// Berechnungshilfe: Nettokaltmiete × Faktor = Kautionsbetrag
+var nkm = document.getElementById("nkm"),
+    faktor = document.getElementById("faktor"),
+    kaution = document.getElementById("kaution");
+function rechne(){
+  var m = parseFloat(nkm.value), f = parseFloat(faktor.value);
+  if(isNaN(m) || isNaN(f)){ kaution.value = ""; return; }
+  if(f > 3){ f = 3; faktor.value = 3; } // gesetzliche Höchstgrenze (§ 551 Abs. 1 BGB)
+  if(f < 0){ f = 0; faktor.value = 0; }
+  var betrag = m * f;
+  kaution.value = betrag.toLocaleString("de-DE", {minimumFractionDigits:2, maximumFractionDigits:2}) + " €";
+}
+nkm.addEventListener("input", rechne);
+faktor.addEventListener("input", rechne);
+</script>

@@ -1,0 +1,225 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kündigung / Empfangsbestätigung | Vermieter-Toolkit</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --cream2:#F1E9DA; --paper:#FFFFFF;
+    --terra:#BB4A2C; --terra-d:#8A421684; --terra-dark:#93391E;
+    --ink:#33302B; --ink-soft:#5C564E; --line:#E3D8C6;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+    font-size:15px;line-height:1.5;}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:600;color:var(--terra-dark);margin:0 0 .3em;}
+  .wrap{max-width:900px;margin:0 auto;padding:24px 18px 60px;}
+  header.top{border-bottom:2px solid var(--terra);padding-bottom:14px;margin-bottom:8px;}
+  header.top .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);font-weight:700;}
+  header.top h1{font-size:28px;margin-top:4px;}
+  header.top .brand{font-family:Georgia,serif;font-size:15px;color:var(--ink-soft);font-weight:600;float:right;margin-top:2px;}
+  header.top p{margin:.3em 0 0;color:var(--ink-soft);max-width:80ch;}
+  .disclaimer{background:#FBEbdc;border:1px solid var(--terra);border-left:5px solid var(--terra);
+    border-radius:6px;padding:12px 16px;margin:18px 0;font-size:13px;color:var(--terra-dark);}
+  .disclaimer strong{font-weight:700;}
+  .panel{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:16px 0;
+    box-shadow:0 1px 2px rgba(90,60,30,.05);}
+  .panel h2{font-size:18px;margin-bottom:12px;}
+  .clause{font-size:13.5px;color:var(--ink);line-height:1.6;margin:0 0 10px;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;}
+  .fld{display:flex;flex-direction:column;gap:4px;}
+  .fld.wide{grid-column:1/-1;}
+  .fld label{font-size:12.5px;font-weight:600;color:var(--ink-soft);}
+  .fld .hint{font-size:11px;color:var(--ink-soft);font-weight:400;}
+  input,select,textarea{font:inherit;padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);width:100%;}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--terra);outline-offset:0;}
+  textarea{resize:vertical;min-height:44px;}
+  .radio{display:flex;gap:20px;flex-wrap:wrap;align-items:center;padding-top:3px;}
+  .radio label{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;}
+  .radio input{width:17px;height:17px;accent-color:var(--terra);}
+  .radio.col{flex-direction:column;align-items:flex-start;gap:9px;}
+  .toggle{display:flex;gap:22px;flex-wrap:wrap;align-items:center;margin:2px 0 4px;}
+  .toggle label{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:var(--terra-dark);cursor:pointer;}
+  .toggle input[type=radio]{width:20px;height:20px;accent-color:var(--terra);flex:0 0 auto;}
+  .sig{margin-top:12px;max-width:440px;}
+  .sig .line{border-bottom:1px solid var(--ink);height:34px;}
+  .sig .cap{font-size:12px;color:var(--ink-soft);margin-top:6px;}
+  .btn{font:inherit;font-weight:600;border:1px solid var(--terra);background:var(--terra);color:#fff;
+    padding:9px 16px;border-radius:7px;cursor:pointer;}
+  .btn:hover{background:var(--terra-dark);}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0;}
+  footer{margin-top:30px;font-size:12px;color:var(--ink-soft);text-align:center;border-top:1px solid var(--line);padding-top:14px;}
+  .print-only{display:none;}
+  .mode{display:none;}
+  .mode.active{display:block;}
+  @media(max-width:640px){header.top h1{font-size:23px}.grid{grid-template-columns:1fr}}
+  @media print{
+    @page{size:A4;margin:18mm 20mm;}
+    body{background:#fff;color:#000;font-size:12px;}
+    .wrap{max-width:none;padding:0;}
+    h1,h2,h3{color:#000;}
+    header.top{border-bottom:1px solid #000;margin-bottom:4px;}
+    header.top .kicker,header.top .brand{color:#000;}
+    .panel{background:#fff;border:1px solid #999;box-shadow:none;break-inside:avoid;margin:10px 0;padding:12px 14px;}
+    input,select,textarea{background:#fff;border:1px solid #999;color:#000;}
+    input[type=checkbox],input[type=radio]{accent-color:#000!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .screen-only,.toggle-ctrl,.disclaimer,.hint,.hintbox,.lawbox,.toolbar,.noprint{display:none!important;}
+    .print-only{display:inline!important;}
+    .mode{display:none!important;}
+    .mode.active{display:block!important;}
+    footer{border-top:1px solid #000;color:#000;font-size:10px;text-align:center;margin-top:16px;padding-top:8px;}
+    h1,h2,h3{break-after:avoid;}
+    header.top{break-after:avoid;}
+    .panel,.sig,.fld,tr{break-inside:avoid;}
+  }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <span class="brand">DienerHaus</span>
+    <div class="kicker">Vermieter-Toolkit &middot; DienerHaus</div>
+    <h1>Kündigung &amp; Empfangsbestätigung</h1>
+    <p>Vorlage für die Kündigung des Wohnraummietverhältnisses durch den Vermieter oder für die bloße Bestätigung des
+       Zugangs einer Mieterkündigung. Bitte oben den passenden Modus wählen.</p>
+  </header>
+
+  <div class="disclaimer screen-only">
+    <strong>Hinweis:</strong> Unverbindliche Mustervorlage, <strong>keine Rechtsberatung</strong>. Nutzung auf eigene
+    Gefahr; im Zweifel anwaltlich prüfen lassen. Diese Vorlage wird kostenlos und unverbindlich zur Verfügung gestellt.
+    Für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit sowie für Vorsatz und grobe
+    Fahrlässigkeit haften wir nach den gesetzlichen Bestimmungen; ebenso bei der Verletzung wesentlicher
+    Vertragspflichten. Im Übrigen ist die Haftung ausgeschlossen.
+    <strong>Eine Wohnraumkündigung bedarf der Schriftform mit eigenhändiger Unterschrift im Original (&sect; 568 BGB)
+    &mdash; E-Mail/Fax genügen nicht. Prüfen Sie Frist und Begründung vor Zustellung.</strong>
+    <strong>Stand: 08/2026.</strong>
+  </div>
+
+  <div class="panel toggle-ctrl">
+    <h2>Modus wählen</h2>
+    <div class="toggle">
+      <label><input type="radio" name="modus" id="mVerm" checked> Vermieterkündigung aussprechen</label>
+      <label><input type="radio" name="modus" id="mBest"> Zugang einer Mieterkündigung bestätigen</label>
+    </div>
+  </div>
+
+  <!-- ============ MODUS A: VERMIETERKÜNDIGUNG ============ -->
+  <div class="mode active" id="modeVerm">
+    <div class="panel">
+      <h2>1 &middot; Absender &amp; Empfänger</h2>
+      <div class="grid">
+        <div class="fld wide"><label for="a_abs">Absender &mdash; Vermieter / Eigentümer (Name, Anschrift)</label><input id="a_abs" type="text"></div>
+        <div class="fld wide"><label for="a_emp">Empfänger &mdash; Mieter (Name/n, Anschrift)</label><input id="a_emp" type="text"></div>
+        <div class="fld wide"><label for="a_obj">Betroffenes Mietobjekt (Straße, Hausnummer, PLZ, Ort, Lage/Etage)</label><input id="a_obj" type="text"></div>
+        <div class="fld"><label for="a_ort">Ort, Datum des Schreibens</label><input id="a_ort" type="text"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>2 &middot; Kündigungserklärung &amp; Grund</h2>
+      <p class="clause">Hiermit kündige ich / kündigen wir das über die vorbezeichnete Wohnung bestehende
+         Mietverhältnis ordentlich zum nachstehend genannten Termin. Die Kündigung wird wie folgt begründet:</p>
+      <div class="radio col" style="margin-bottom:10px">
+        <label><input type="radio" name="a_grund"> Eigenbedarf (&sect; 573 Abs. 2 Nr. 2 BGB)</label>
+        <label><input type="radio" name="a_grund"> sonstiges berechtigtes Interesse (&sect; 573 Abs. 1/2 BGB)</label>
+      </div>
+      <div class="fld wide"><label for="a_gtext">Grund konkret benennen (Tatsachen, für wen, warum &mdash; erforderlich zur Wirksamkeit)</label>
+        <textarea id="a_gtext" rows="3"></textarea></div>
+    </div>
+
+    <div class="panel">
+      <h2>3 &middot; Kündigungsfrist (&sect; 573c BGB)</h2>
+      <div class="radio col">
+        <label><input type="radio" name="a_frist"> 3 Monate</label>
+        <label><input type="radio" name="a_frist"> 6 Monate</label>
+        <label><input type="radio" name="a_frist"> 9 Monate</label>
+      </div>
+      <div class="fld" style="margin-top:8px"><span class="hint">Zuordnung nach Dauer des Mietverhältnisses:
+        bis 5 Jahre &rarr; 3 Monate, ab 5 Jahre &rarr; 6 Monate, ab 8 Jahre &rarr; 9 Monate.</span></div>
+      <div class="grid" style="margin-top:10px">
+        <div class="fld"><label for="a_ende">Beendigungstermin (Ablauf der Frist)</label><input id="a_ende" type="date"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>4 &middot; Widerspruchshinweis (&sect;&sect; 574&ndash;574b i. V. m. &sect; 568 Abs. 2 BGB)</h2>
+      <p class="clause">Auf das Widerspruchsrecht des Mieters ist gemäß &sect; 568 Abs. 2 BGB in der Kündigung
+         hinzuweisen:</p>
+      <p class="clause">Sie können dieser Kündigung nach den &sect;&sect; 574 bis 574b BGB widersprechen und die
+         Fortsetzung des Mietverhältnisses verlangen, wenn die Beendigung des Mietverhältnisses für Sie, Ihre Familie
+         oder einen anderen Angehörigen Ihres Haushalts eine Härte bedeuten würde, die auch unter Würdigung unserer
+         berechtigten Interessen nicht zu rechtfertigen ist. Der Widerspruch ist schriftlich zu erklären und muss uns
+         spätestens zwei Monate vor der Beendigung des Mietverhältnisses zugegangen sein. Auf Form und Frist des
+         Widerspruchs (&sect; 574b BGB) weisen wir Sie hiermit ausdrücklich hin.</p>
+    </div>
+
+    <div class="panel">
+      <h2>5 &middot; Unterschrift Vermieter</h2>
+      <p class="clause" style="margin-top:-2px">Nur der Vermieter unterschreibt.</p>
+      <div class="fld" style="margin-bottom:6px"><span class="hint">eigenhändig im Original &mdash; nicht per E-Mail
+        (&sect; 568 BGB).</span></div>
+      <div class="sig">
+        <div class="line"></div><div class="cap">Ort, Datum</div>
+        <div class="line" style="margin-top:14px"></div><div class="cap">Unterschrift Vermieter / Eigentümer</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MODUS B: EMPFANGSBESTÄTIGUNG ============ -->
+  <div class="mode" id="modeBest">
+    <div class="panel">
+      <h2>1 &middot; Absender &amp; Empfänger</h2>
+      <div class="grid">
+        <div class="fld wide"><label for="b_abs">Absender &mdash; Vermieter / Eigentümer (Name, Anschrift)</label><input id="b_abs" type="text"></div>
+        <div class="fld wide"><label for="b_emp">Empfänger &mdash; Mieter (Name/n, Anschrift)</label><input id="b_emp" type="text"></div>
+        <div class="fld wide"><label for="b_obj">Betroffenes Mietobjekt (Straße, Hausnummer, PLZ, Ort, Lage/Etage)</label><input id="b_obj" type="text"></div>
+        <div class="fld"><label for="b_ort">Ort, Datum des Schreibens</label><input id="b_ort" type="text"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>2 &middot; Empfangsbestätigung Mieterkündigung</h2>
+      <p class="clause">Hiermit bestätigen wir den Zugang Ihrer Kündigung mit dem nachstehend festgehaltenen
+         Kündigungs- und Eingangsdatum. Diese Empfangsbestätigung dokumentiert ausschließlich den Zugang und stellt
+         selbst keine Kündigung und keine Zustimmung zu einem bestimmten Beendigungszeitpunkt dar.</p>
+      <div class="grid">
+        <div class="fld"><label for="b_kdat">Datum der Mieterkündigung</label><input id="b_kdat" type="date"></div>
+        <div class="fld"><label for="b_edat">Eingangsdatum (Zugang bei uns)</label><input id="b_edat" type="date"></div>
+        <div class="fld"><label for="b_bend">Sich daraus ergebendes Beendigungsdatum</label><input id="b_bend" type="date"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>3 &middot; Unterschrift Vermieter</h2>
+      <div class="sig">
+        <div class="line"></div><div class="cap">Ort, Datum</div>
+        <div class="line" style="margin-top:14px"></div><div class="cap">Unterschrift Vermieter / Eigentümer</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toolbar noprint screen-only">
+    <button class="btn" onclick="window.print()">Drucken / als PDF speichern</button>
+  </div>
+
+  <footer>
+    <span class="screen-only"><strong>Stand: 08/2026</strong> &middot; Muster ohne Gewähr &ndash; kein Ersatz für Rechtsberatung. Vollständiger Hinweis siehe oben.<br>
+    &copy; DienerHaus GmbH &middot; dienerhaus.de</span>
+    <span class="print-only">Muster ohne Gew&auml;hr &middot; Stand 08/2026 &middot; DienerHaus</span>
+  </footer>
+</div>
+
+<script>
+"use strict";
+// Modus-Umschaltung: Vermieterkündigung <-> Empfangsbestätigung (gegenseitig ausschließend)
+var mVerm = document.getElementById("mVerm"),
+    mBest = document.getElementById("mBest"),
+    modeVerm = document.getElementById("modeVerm"),
+    modeBest = document.getElementById("modeBest");
+function apply(){
+  var verm = mVerm.checked;
+  modeVerm.classList.toggle("active", verm);
+  modeBest.classList.toggle("active", !verm);
+}
+mVerm.addEventListener("change", apply);
+mBest.addEventListener("change", apply);
+apply();
+</script>

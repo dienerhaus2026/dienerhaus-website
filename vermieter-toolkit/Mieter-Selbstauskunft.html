@@ -1,0 +1,194 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mieter-Selbstauskunft | Vermieter-Toolkit</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --cream2:#F1E9DA; --paper:#FFFFFF;
+    --terra:#BB4A2C; --terra-d:#8A421684; --terra-dark:#93391E;
+    --ink:#33302B; --ink-soft:#5C564E; --line:#E3D8C6;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+    font-size:15px;line-height:1.5;}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:600;color:var(--terra-dark);margin:0 0 .3em;}
+  .wrap{max-width:900px;margin:0 auto;padding:24px 18px 60px;}
+  header.top{border-bottom:2px solid var(--terra);padding-bottom:14px;margin-bottom:8px;}
+  header.top .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);font-weight:700;}
+  header.top h1{font-size:28px;margin-top:4px;}
+  header.top .brand{font-family:Georgia,serif;font-size:15px;color:var(--ink-soft);font-weight:600;float:right;margin-top:2px;}
+  header.top p{margin:.3em 0 0;color:var(--ink-soft);max-width:80ch;}
+  .disclaimer{background:#FBEbdc;border:1px solid var(--terra);border-left:5px solid var(--terra);
+    border-radius:6px;padding:12px 16px;margin:18px 0;font-size:13px;color:var(--terra-dark);}
+  .disclaimer strong{font-weight:700;}
+  .panel{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:16px 0;
+    box-shadow:0 1px 2px rgba(90,60,30,.05);}
+  .panel h2{font-size:18px;margin-bottom:12px;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;}
+  .fld{display:flex;flex-direction:column;gap:4px;}
+  .fld.wide{grid-column:1/-1;}
+  .fld label{font-size:12.5px;font-weight:600;color:var(--ink-soft);}
+  .fld .hint{font-size:11px;color:var(--ink-soft);font-weight:400;}
+  input,select,textarea{font:inherit;padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);width:100%;}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--terra);outline-offset:0;}
+  .radio{display:flex;gap:20px;flex-wrap:wrap;align-items:center;padding-top:3px;}
+  .radio label{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;}
+  .radio input{width:17px;height:17px;accent-color:var(--terra);}
+  .qrow{border-bottom:1px solid var(--line);padding:10px 0;display:grid;grid-template-columns:1fr auto;gap:8px 18px;align-items:center;}
+  .qrow:last-child{border-bottom:none;}
+  .qrow .q{font-size:13.5px;}
+  .privacy{font-size:12.5px;color:var(--ink-soft);background:var(--cream2);border-radius:6px;padding:12px 15px;line-height:1.55;}
+  .privacy b{color:var(--terra-dark);}
+  .review-flag{font-size:11px;color:var(--terra);font-weight:700;text-transform:uppercase;letter-spacing:.05em;}
+  .consent{display:flex;gap:9px;align-items:flex-start;margin-top:10px;font-size:13px;}
+  .consent input{width:18px;height:18px;accent-color:var(--terra);flex:0 0 auto;margin-top:2px;}
+  .sig{margin-top:16px;max-width:420px;}
+  .sig .line{border-bottom:1px solid var(--ink);height:34px;}
+  .sig .cap{font-size:12px;color:var(--ink-soft);margin-top:6px;}
+  .btn{font:inherit;font-weight:600;border:1px solid var(--terra);background:var(--terra);color:#fff;
+    padding:9px 16px;border-radius:7px;cursor:pointer;}
+  .btn:hover{background:var(--terra-dark);}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0;}
+  footer{margin-top:30px;font-size:12px;color:var(--ink-soft);text-align:center;border-top:1px solid var(--line);padding-top:14px;}
+  .print-only{display:none;}
+  @media(max-width:640px){header.top h1{font-size:23px}.grid{grid-template-columns:1fr}.qrow{grid-template-columns:1fr}}
+  @media print{
+    @page{size:A4;margin:18mm 20mm;}
+    body{background:#fff;color:#000;font-size:12px;}
+    .wrap{max-width:none;padding:0;}
+    h1,h2,h3{color:#000;}
+    header.top{border-bottom:1px solid #000;margin-bottom:4px;}
+    header.top .kicker,header.top .brand{color:#000;}
+    .panel{background:#fff;border:1px solid #999;box-shadow:none;break-inside:avoid;margin:10px 0;padding:12px 14px;}
+    input,select,textarea{background:#fff;border:1px solid #999;color:#000;}
+    input[type=checkbox],input[type=radio]{accent-color:#000!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .privacy{background:#fff;color:#000;}
+    .privacy b{color:#000;}
+    .screen-only,.toggle-ctrl,.disclaimer,.hint,.hintbox,.lawbox,.toolbar,.noprint{display:none!important;}
+    .print-only{display:inline!important;}
+    footer{border-top:1px solid #000;color:#000;font-size:10px;text-align:center;margin-top:16px;padding-top:8px;}
+    h1,h2,h3{break-after:avoid;}
+    header.top{break-after:avoid;}
+    .panel,.sig,.fld,.qrow{break-inside:avoid;}
+  }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <span class="brand">DienerHaus</span>
+    <div class="kicker">Vermieter-Toolkit &middot; DienerHaus</div>
+    <h1>Mieter-Selbstauskunft</h1>
+    <p>Freiwillige Angaben des Mietinteressenten zur Prüfung des Mietinteresses. Es werden ausschließlich Daten
+       erhoben, die für die Vermietungsentscheidung erforderlich und datenschutzrechtlich zulässig sind.</p>
+  </header>
+
+  <div class="disclaimer screen-only">
+    <strong>Hinweis:</strong> Unverbindliche Mustervorlage, <strong>keine Rechtsberatung</strong>. Nutzung auf eigene
+    Gefahr; im Zweifel anwaltlich prüfen lassen. Diese Vorlage wird kostenlos und unverbindlich zur Verfügung gestellt.
+    Für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit sowie für Vorsatz und grobe
+    Fahrlässigkeit haften wir nach den gesetzlichen Bestimmungen; ebenso bei der Verletzung wesentlicher
+    Vertragspflichten. Im Übrigen ist die Haftung ausgeschlossen. <strong>Stand: 08/2026.</strong>
+  </div>
+
+  <div class="panel">
+    <h2>1 &middot; Angaben zur Person</h2>
+    <div class="grid">
+      <div class="fld"><label>Name, Vorname</label><input type="text"></div>
+      <div class="fld"><label>Geburtsdatum</label><input type="date"></div>
+      <div class="fld wide"><label>Aktuelle Anschrift (Straße, Hausnummer, PLZ, Ort)</label><input type="text"></div>
+      <div class="fld"><label>Telefon</label><input type="tel"></div>
+      <div class="fld"><label>E-Mail</label><input type="email"></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>2 &middot; Beruf &amp; Einkommen</h2>
+    <div class="grid">
+      <div class="fld"><label>Ausgeübter Beruf</label><input type="text"></div>
+      <div class="fld"><label>Arbeitgeber</label><input type="text"></div>
+      <div class="fld"><label>Beschäftigungsverhältnis</label>
+        <div class="radio">
+          <label><input type="radio" name="besch"> unbefristet</label>
+          <label><input type="radio" name="besch"> befristet</label>
+        </div>
+      </div>
+      <div class="fld"><label>Beschäftigt seit</label><input type="month"></div>
+      <div class="fld wide"><label>Monatliches Nettoeinkommen (Betrag in &euro; oder Rahmen)</label><input type="text" placeholder="z. B. 2.800 € oder 2.500–3.000 €"></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>3 &middot; Haushalt</h2>
+    <div class="grid">
+      <div class="fld"><label>Zahl der einziehenden Personen</label><input type="number" min="1" step="1"></div>
+      <div class="fld"><label>Haustiere</label>
+        <div class="radio">
+          <label><input type="radio" name="tier"> nein</label>
+          <label><input type="radio" name="tier"> ja</label>
+        </div>
+      </div>
+      <div class="fld wide"><label>Falls Haustiere: welche?</label><input type="text"></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>4 &middot; Bisheriges Mietverhältnis</h2>
+    <div class="grid">
+      <div class="fld wide"><label>Derzeitiger Vermieter (Name)</label><input type="text"></div>
+      <div class="fld wide"><label>Anschrift des derzeitigen Vermieters</label><input type="text"></div>
+    </div>
+    <div style="margin-top:8px">
+      <div class="qrow">
+        <div class="q">Bestehen gegenüber dem derzeitigen Vermieter Mietrückstände?</div>
+        <div class="radio"><label><input type="radio" name="rueck"> nein</label><label><input type="radio" name="rueck"> ja</label></div>
+      </div>
+      <div class="qrow">
+        <div class="q">Wurde in den letzten Jahren ein Räumungstitel gegen Sie erwirkt <b>(mit Mietbezug)</b>?</div>
+        <div class="radio"><label><input type="radio" name="raeum"> nein</label><label><input type="radio" name="raeum"> ja</label></div>
+      </div>
+      <div class="qrow">
+        <div class="q">Haben Sie in den letzten Jahren eine eidesstattliche Versicherung abgegeben <b>(mit Mietbezug)</b>?</div>
+        <div class="radio"><label><input type="radio" name="eid"> nein</label><label><input type="radio" name="eid"> ja</label></div>
+      </div>
+      <div class="qrow">
+        <div class="q">Läuft oder lief ein Privatinsolvenzverfahren <b>(mit Mietbezug)</b>?</div>
+        <div class="radio"><label><input type="radio" name="inso"> nein</label><label><input type="radio" name="inso"> ja</label></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>5 &middot; Datenschutz &amp; Einwilligung</h2>
+    <div class="privacy">
+      <b>Verantwortlicher:</b> ____________________ (Name/Anschrift des Vermieters).<br><br>
+      <b>Zweck &amp; Rechtsgrundlage:</b> Die Angaben werden ausschließlich zur Prüfung Ihres Mietinteresses und zur
+      Vorbereitung eines möglichen Mietvertrags verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO
+      (vorvertragliche Maßnahmen) für die erforderlichen Angaben; ergänzende freiwillige Angaben und die nachstehende
+      Einwilligung stützen sich auf Art. 6 Abs. 1 lit. a DSGVO.<br><br>
+      <b>Freiwilligkeit:</b> Die Angaben sind freiwillig; ohne die für die Vermietungsentscheidung erforderlichen
+      Angaben kann eine Bewerbung ggf. nicht berücksichtigt werden.<br><br>
+      <b>Löschung:</b> Kommt kein Mietvertrag zustande, werden Ihre Daten unverzüglich gelöscht bzw. die Unterlagen
+      vernichtet &mdash; ausdrücklich auch bei nicht berücksichtigten (abgelehnten) Bewerbern. Bei Vertragsabschluss
+      erfolgt die Speicherung für die Dauer des Mietverhältnisses und der gesetzlichen Aufbewahrungsfristen.<br><br>
+      <b>Ihre Rechte:</b> Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung und Widerspruch sowie
+      ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde. Eine erteilte Einwilligung können Sie jederzeit mit
+      Wirkung für die Zukunft widerrufen.
+    </div>
+    <label class="consent"><input type="checkbox"> Ich habe die vorstehenden Angaben nach bestem Wissen wahrheitsgemäß
+      gemacht und willige in die Verarbeitung meiner Daten zum genannten Zweck ein.</label>
+    <div class="sig">
+      <div class="line"></div><div class="cap">Ort, Datum</div>
+      <div class="line" style="margin-top:14px"></div><div class="cap">Unterschrift Mietinteressent</div>
+    </div>
+  </div>
+
+  <div class="toolbar noprint screen-only">
+    <button class="btn" onclick="window.print()">Drucken / als PDF speichern</button>
+  </div>
+
+  <footer>
+    <span class="screen-only"><strong>Stand: 08/2026</strong> &middot; Muster ohne Gewähr &ndash; kein Ersatz für Rechtsberatung. Vollständiger Hinweis siehe oben.<br>
+    &copy; DienerHaus GmbH &middot; dienerhaus.de</span>
+    <span class="print-only">Muster ohne Gew&auml;hr &middot; Stand 08/2026 &middot; DienerHaus</span>
+  </footer>
+</div>

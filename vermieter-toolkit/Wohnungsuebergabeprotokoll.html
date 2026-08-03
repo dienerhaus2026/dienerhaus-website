@@ -1,0 +1,206 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wohnungsübergabeprotokoll | Vermieter-Toolkit</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --cream2:#F1E9DA; --paper:#FFFFFF;
+    --terra:#BB4A2C; --terra-d:#8A421684; --terra-dark:#93391E;
+    --ink:#33302B; --ink-soft:#5C564E; --line:#E3D8C6;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+    font-size:15px;line-height:1.5;}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:600;color:var(--terra-dark);margin:0 0 .3em;}
+  .wrap{max-width:1000px;margin:0 auto;padding:24px 18px 60px;}
+  header.top{border-bottom:2px solid var(--terra);padding-bottom:14px;margin-bottom:8px;}
+  header.top .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);font-weight:700;}
+  header.top h1{font-size:30px;margin-top:4px;}
+  header.top .brand{font-family:Georgia,serif;font-size:15px;color:var(--ink-soft);font-weight:600;float:right;margin-top:2px;}
+  header.top p{margin:.3em 0 0;color:var(--ink-soft);max-width:78ch;}
+  .disclaimer{background:#FBEbdc;border:1px solid var(--terra);border-left:5px solid var(--terra);
+    border-radius:6px;padding:12px 16px;margin:18px 0;font-size:13px;color:var(--terra-dark);}
+  .disclaimer strong{font-weight:700;}
+  .panel{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:16px 0;
+    box-shadow:0 1px 2px rgba(90,60,30,.05);}
+  .panel h2{font-size:19px;margin-bottom:12px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px 18px;}
+  .grid.two{grid-template-columns:1fr 1fr;}
+  .fld{display:flex;flex-direction:column;gap:4px;}
+  .fld.wide{grid-column:1/-1;}
+  .fld label{font-size:12.5px;font-weight:600;color:var(--ink-soft);}
+  .fld .hint{font-size:11px;color:var(--ink-soft);font-weight:400;}
+  input,select,textarea{font:inherit;padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:var(--cream);color:var(--ink);width:100%;}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--terra);outline-offset:0;background:#fff;}
+  textarea{resize:vertical;min-height:44px;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  thead th{background:var(--cream2);text-align:left;padding:9px 8px;border-bottom:2px solid var(--terra-d);
+    font-size:12px;color:var(--terra-dark);vertical-align:bottom;}
+  tbody td{padding:5px 8px;border-bottom:1px solid var(--line);vertical-align:middle;}
+  tbody td input{background:#fff;}
+  .toggle{display:flex;gap:22px;flex-wrap:wrap;align-items:center;margin:2px 0 4px;}
+  .toggle label{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:var(--terra-dark);cursor:pointer;}
+  .toggle input[type=checkbox]{width:20px;height:20px;accent-color:var(--terra);flex:0 0 auto;}
+  .sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 40px;margin-top:10px;}
+  .sig{display:flex;flex-direction:column;gap:6px;}
+  .sig .line{border-bottom:1px solid var(--ink);height:34px;}
+  .sig .cap{font-size:12px;color:var(--ink-soft);}
+  .btn{font:inherit;font-weight:600;border:1px solid var(--terra);background:var(--terra);color:#fff;
+    padding:9px 16px;border-radius:7px;cursor:pointer;}
+  .btn:hover{background:var(--terra-dark);}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0;}
+  footer{margin-top:30px;font-size:12px;color:var(--ink-soft);text-align:center;border-top:1px solid var(--line);padding-top:14px;}
+  .tablescroll{overflow-x:auto;}
+  .print-only{display:none;}
+  @media(max-width:640px){header.top h1{font-size:24px}.grid.two,.sig-grid{grid-template-columns:1fr}}
+  @media print{
+    @page{size:A4;margin:18mm 20mm;}
+    body{background:#fff;color:#000;font-size:12px;}
+    .wrap{max-width:none;padding:0;}
+    h1,h2,h3{color:#000;}
+    header.top{border-bottom:1px solid #000;margin-bottom:4px;}
+    header.top .kicker,header.top .brand{color:#000;}
+    .panel{background:#fff;border:1px solid #999;box-shadow:none;break-inside:avoid;margin:10px 0;padding:12px 14px;}
+    .toggle label{color:#000;}
+    thead th{background:#fff;color:#000;border-bottom:1.5px solid #000;}
+    tbody td{border-bottom:1px solid #999;}
+    input,select,textarea{background:#fff;border:1px solid #999;color:#000;}
+    input[type=checkbox],input[type=radio]{accent-color:#000!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .screen-only,.toggle-ctrl,.disclaimer,.hint,.hintbox,.lawbox,.toolbar,.noprint{display:none!important;}
+    .print-only{display:inline!important;}
+    footer{border-top:1px solid #000;color:#000;font-size:10px;text-align:center;margin-top:16px;padding-top:8px;}
+    h1,h2,h3{break-after:avoid;}
+    header.top{break-after:avoid;}
+    .panel,.sig-grid,.sig,.fld,tr{break-inside:avoid;}
+  }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <span class="brand">DienerHaus</span>
+    <div class="kicker">Vermieter-Toolkit &middot; DienerHaus</div>
+    <h1>Wohnungsübergabeprotokoll</h1>
+    <p>Zustands- und Zählerstandsprotokoll zur Übergabe der Wohnung. Bitte am Bildschirm ausfüllen oder
+       ausdrucken und gemeinsam vor Ort ausfüllen. Jede Zeile im Beisein beider Parteien prüfen.</p>
+  </header>
+
+  <div class="disclaimer screen-only">
+    <strong>Hinweis:</strong> Unverbindliche Mustervorlage, <strong>keine Rechtsberatung</strong>. Nutzung auf eigene
+    Gefahr. Im Zweifel anwaltlich prüfen lassen. Diese Vorlage wird kostenlos und unverbindlich zur Verfügung gestellt.
+    Für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit sowie für Vorsatz und grobe
+    Fahrlässigkeit haften wir nach den gesetzlichen Bestimmungen; ebenso bei der Verletzung wesentlicher
+    Vertragspflichten. Im Übrigen ist die Haftung ausgeschlossen. <strong>Stand: 08/2026.</strong>
+  </div>
+
+  <div class="panel">
+    <h2>Art der Übergabe</h2>
+    <div class="toggle">
+      <label><input type="checkbox" id="cbEinzug"> Einzug (Übergabe an Mieter)</label>
+      <label><input type="checkbox" id="cbAuszug"> Auszug (Rückgabe an Vermieter)</label>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>1 &middot; Objekt &amp; Beteiligte</h2>
+    <div class="grid">
+      <div class="fld wide"><label>Objekt / Anschrift der Wohnung (Straße, Hausnummer, PLZ, Ort)</label><input type="text"></div>
+      <div class="fld"><label>Lage / Etage / Wohnungsnr.</label><input type="text"></div>
+      <div class="fld"><label>Datum der Übergabe</label><input type="date"></div>
+      <div class="fld"><label>Uhrzeit der Übergabe</label><input type="time"></div>
+      <div class="fld"><label>Vermieter / Eigentümer (Name)</label><input type="text"></div>
+      <div class="fld"><label>Mieter (Name/n)</label><input type="text"></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>2 &middot; Zählerstände</h2>
+    <p style="margin-top:-4px;color:var(--ink-soft);font-size:13px;">Zählernummer zwingend mit aufnehmen &ndash; sie
+       ordnet den Stand eindeutig dem Gerät zu.</p>
+    <div class="tablescroll">
+    <table>
+      <thead>
+        <tr><th style="min-width:150px">Zähler</th><th>Zählernummer</th><th>Zählerstand</th><th>Ablesedatum</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Strom</td><td><input type="text"></td><td><input type="text"></td><td><input type="date"></td></tr>
+        <tr><td>Gas</td><td><input type="text"></td><td><input type="text"></td><td><input type="date"></td></tr>
+        <tr><td>Wasser kalt</td><td><input type="text"></td><td><input type="text"></td><td><input type="date"></td></tr>
+        <tr><td>Wasser warm</td><td><input type="text"></td><td><input type="text"></td><td><input type="date"></td></tr>
+        <tr><td>Heizung / Wärmemengenzähler (WMZ)</td><td><input type="text"></td><td><input type="text"></td><td><input type="date"></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>3 &middot; Zustand der Räume</h2>
+    <div class="tablescroll">
+    <table>
+      <thead>
+        <tr><th style="min-width:150px">Raum</th><th style="min-width:260px">Zustand / Mängel</th><th style="min-width:180px">Anmerkung</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Flur / Diele</td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td>Wohnzimmer</td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td>Schlafzimmer</td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td>Küche</td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td>Bad</td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td>WC</td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td>Keller / Abstellraum</td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td>Balkon / Sonstiges</td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text" placeholder="weiterer Raum"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>4 &middot; Schlüsselübergabe</h2>
+    <div class="tablescroll">
+    <table>
+      <thead><tr><th style="min-width:200px">Art</th><th style="max-width:140px">Anzahl</th></tr></thead>
+      <tbody>
+        <tr><td>Haustürschlüssel</td><td style="max-width:140px"><input type="number" min="0" step="1"></td></tr>
+        <tr><td>Wohnungstürschlüssel</td><td><input type="number" min="0" step="1"></td></tr>
+        <tr><td>Briefkastenschlüssel</td><td><input type="number" min="0" step="1"></td></tr>
+        <tr><td>Kellerschlüssel</td><td><input type="number" min="0" step="1"></td></tr>
+        <tr><td><input type="text" placeholder="Sonstige (z. B. Garage, Tor)"></td><td><input type="number" min="0" step="1"></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>5 &middot; Unterschriften</h2>
+    <p style="margin-top:-4px;color:var(--ink-soft);font-size:13px;">Mit ihrer Unterschrift bestätigen beide Parteien
+       die Richtigkeit der obigen Angaben.</p>
+    <div class="sig-grid">
+      <div class="sig">
+        <div class="line"></div><div class="cap">Ort, Datum &mdash; Vermieter / Eigentümer</div>
+        <div class="line" style="margin-top:14px"></div><div class="cap">Unterschrift Vermieter</div>
+      </div>
+      <div class="sig">
+        <div class="line"></div><div class="cap">Ort, Datum &mdash; Mieter</div>
+        <div class="line" style="margin-top:14px"></div><div class="cap">Unterschrift Mieter</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toolbar noprint screen-only">
+    <button class="btn" onclick="window.print()">Drucken / als PDF speichern</button>
+  </div>
+
+  <footer>
+    <span class="screen-only"><strong>Stand: 08/2026</strong> &middot; Muster ohne Gewähr &ndash; kein Ersatz für Rechtsberatung. Vollständiger Hinweis siehe oben.<br>
+    &copy; DienerHaus GmbH &middot; dienerhaus.de</span>
+    <span class="print-only">Muster ohne Gew&auml;hr &middot; Stand 08/2026 &middot; DienerHaus</span>
+  </footer>
+</div>
+
+<script>
+"use strict";
+// Einzug / Auszug schließen sich gegenseitig aus
+var e = document.getElementById("cbEinzug"), a = document.getElementById("cbAuszug");
+e.addEventListener("change", function(){ if(e.checked) a.checked = false; });
+a.addEventListener("change", function(){ if(a.checked) e.checked = false; });
+</script>

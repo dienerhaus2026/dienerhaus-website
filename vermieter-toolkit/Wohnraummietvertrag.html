@@ -1,0 +1,369 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wohnraummietvertrag (Muster) | Vermieter-Toolkit</title>
+<style>
+  :root{
+    --cream:#FAF6EF; --cream2:#F1E9DA; --paper:#FFFFFF;
+    --terra:#BB4A2C; --terra-d:#8A421684; --terra-dark:#93391E;
+    --ink:#33302B; --ink-soft:#5C564E; --line:#E3D8C6;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+    font-size:15px;line-height:1.5;}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:600;color:var(--terra-dark);margin:0 0 .3em;}
+  .wrap{max-width:900px;margin:0 auto;padding:24px 18px 60px;position:relative;z-index:1;}
+  header.top{border-bottom:2px solid var(--terra);padding-bottom:14px;margin-bottom:8px;}
+  header.top .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);font-weight:700;}
+  header.top h1{font-size:28px;margin-top:4px;}
+  header.top .brand{font-family:Georgia,serif;font-size:15px;color:var(--ink-soft);font-weight:600;float:right;margin-top:2px;}
+  header.top p{margin:.3em 0 0;color:var(--ink-soft);max-width:80ch;}
+  .disclaimer{background:#FBEbdc;border:1px solid var(--terra);border-left:5px solid var(--terra);
+    border-radius:6px;padding:12px 16px;margin:18px 0;font-size:13px;color:var(--terra-dark);}
+  .disclaimer strong{font-weight:700;}
+  .panel{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:16px 0;
+    box-shadow:0 1px 2px rgba(90,60,30,.05);}
+  .panel h2{font-size:18px;margin-bottom:12px;}
+  .clause{font-size:13.5px;color:var(--ink);line-height:1.6;margin:0 0 10px;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;}
+  .grid.three{grid-template-columns:1fr 1fr 1fr;}
+  .fld{display:flex;flex-direction:column;gap:4px;}
+  .fld.wide{grid-column:1/-1;}
+  .fld label{font-size:12.5px;font-weight:600;color:var(--ink-soft);}
+  .fld .hint{font-size:11px;color:var(--ink-soft);font-weight:400;}
+  input,select,textarea{font:inherit;padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);width:100%;}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--terra);outline-offset:0;}
+  textarea{resize:vertical;min-height:44px;}
+  .radio{display:flex;gap:20px;flex-wrap:wrap;align-items:center;padding-top:3px;}
+  .radio label{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;}
+  .radio input{width:17px;height:17px;accent-color:var(--terra);}
+  .radio.col{flex-direction:column;align-items:flex-start;gap:9px;}
+  .checks{display:flex;flex-direction:column;gap:9px;margin-top:4px;}
+  .checks label{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;cursor:pointer;}
+  .checks input{width:18px;height:18px;accent-color:var(--terra);flex:0 0 auto;margin-top:1px;}
+  .checks.inline{flex-flow:row wrap;gap:8px 22px;}
+  .hintbox{background:var(--cream2);border-radius:6px;padding:10px 13px;font-size:12.5px;color:var(--ink-soft);line-height:1.55;margin:8px 0 0;}
+  .hintbox b{color:var(--terra-dark);}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  thead th{background:var(--cream2);text-align:left;padding:9px 8px;border-bottom:2px solid var(--terra-d);
+    font-size:12px;color:var(--terra-dark);vertical-align:bottom;}
+  tbody td{padding:5px 8px;border-bottom:1px solid var(--line);vertical-align:middle;}
+  tbody td input{background:#fff;}
+  .sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 40px;margin-top:10px;}
+  .sig{display:flex;flex-direction:column;gap:6px;}
+  .sig .line{border-bottom:1px solid var(--ink);height:34px;}
+  .sig .cap{font-size:12px;color:var(--ink-soft);}
+  .btn{font:inherit;font-weight:600;border:1px solid var(--terra);background:var(--terra);color:#fff;
+    padding:9px 16px;border-radius:7px;cursor:pointer;}
+  .btn:hover{background:var(--terra-dark);}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0;}
+  footer{margin-top:30px;font-size:12px;color:var(--ink-soft);text-align:center;border-top:1px solid var(--line);padding-top:14px;}
+  .tablescroll{overflow-x:auto;}
+  .hidden{display:none;}
+  .print-only{display:none;}
+  @media(max-width:640px){header.top h1{font-size:23px}.grid,.grid.three,.sig-grid{grid-template-columns:1fr}}
+  @media print{
+    @page{size:A4;margin:18mm 20mm;}
+    body{background:#fff;color:#000;font-size:12px;}
+    .wrap{max-width:none;padding:0;}
+    h1,h2,h3{color:#000;}
+    header.top{border-bottom:1px solid #000;margin-bottom:4px;}
+    header.top .kicker,header.top .brand{color:#000;}
+    .panel{background:#fff;border:1px solid #999;box-shadow:none;break-inside:avoid;margin:10px 0;padding:12px 14px;}
+    thead th{background:#fff;color:#000;border-bottom:1.5px solid #000;}
+    tbody td{border-bottom:1px solid #999;}
+    input,select,textarea{background:#fff;border:1px solid #999;color:#000;}
+    input[type=checkbox],input[type=radio]{accent-color:#000!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .screen-only,.toggle-ctrl,.disclaimer,.hint,.hintbox,.lawbox,.toolbar,.noprint{display:none!important;}
+    .print-only{display:inline!important;}
+    .hidden{display:none!important;}
+    footer{border-top:1px solid #000;color:#000;font-size:10px;text-align:center;margin-top:16px;padding-top:8px;}
+    h1,h2,h3{break-after:avoid;}
+    header.top{break-after:avoid;}
+    .panel,.sig-grid,.sig,.fld,tr{break-inside:avoid;}
+  }
+</style>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <span class="brand">DienerHaus</span>
+    <div class="kicker">Vermieter-Toolkit &middot; DienerHaus</div>
+    <h1>Wohnraummietvertrag</h1>
+    <p>Muster eines Wohnraummietvertrags. Bitte alle Felder ausfüllen und die Optionen je Abschnitt
+       auswählen. Vor Verwendung anwaltlich prüfen lassen (siehe Hinweis unten).</p>
+  </header>
+
+  <div class="disclaimer screen-only">
+    <strong>Unverbindliche Mustervorlage &ndash; keine Rechtsberatung.</strong> Nutzung auf eigene Gefahr; vor jeder
+    Verwendung, Weitergabe oder Unterzeichnung anwaltlich prüfen lassen. <strong>Mietrecht ist in weiten Teilen
+    zwingendes Recht; eine einzige unwirksame Klausel kann den gesamten Vertrag oder die Sicherung des Vermieters
+    gefährden.</strong> Diese Vorlage wird kostenlos und unverbindlich zur Verfügung gestellt. Für Schäden aus der
+    Verletzung des Lebens, des Körpers oder der Gesundheit sowie für Vorsatz und grobe Fahrlässigkeit haften wir nach
+    den gesetzlichen Bestimmungen; ebenso bei der Verletzung wesentlicher Vertragspflichten. Im Übrigen ist die Haftung
+    ausgeschlossen. <strong>Stand: 08/2026.</strong>
+  </div>
+
+  <div class="panel">
+    <h2>1 &middot; Mietparteien</h2>
+    <div class="grid">
+      <div class="fld wide"><label for="p_verm">Vermieter / Eigentümer (Name, Anschrift)</label><input id="p_verm" type="text"></div>
+      <div class="fld"><label for="p_m1">Mieter 1 (Name)</label><input id="p_m1" type="text"></div>
+      <div class="fld"><label for="p_m2">Mieter 2 (Name)</label><input id="p_m2" type="text"></div>
+      <div class="fld"><label for="p_m3">Mieter 3 (Name)</label><input id="p_m3" type="text"></div>
+      <div class="fld"><label for="p_m4">Mieter 4 (Name)</label><input id="p_m4" type="text"></div>
+    </div>
+    <div class="hintbox"><b>Hinweis:</b> Mehrere Mieter haften als Gesamtschuldner; Erklärungen des Vermieters wirken
+      gegenüber allen Mietern nur, wenn sie allen zugehen.</div>
+  </div>
+
+  <div class="panel">
+    <h2>2 &middot; Mietobjekt</h2>
+    <div class="grid">
+      <div class="fld wide"><label for="o_adr">Anschrift der Wohnung (Straße, Hausnummer, PLZ, Ort)</label><input id="o_adr" type="text"></div>
+      <div class="fld"><label for="o_lage">Lage / Etage / Wohnungsnr.</label><input id="o_lage" type="text"></div>
+      <div class="fld"><label for="o_flaeche">Wohnfläche (m²)</label><input id="o_flaeche" type="text">
+        <span class="hint">Angabe „ca."; eine erhebliche Abweichung der tatsächlichen Fläche kann zur Mietminderung berechtigen.</span></div>
+      <div class="fld"><label for="o_zimmer">Anzahl Zimmer</label><input id="o_zimmer" type="text"></div>
+      <div class="fld"><label for="o_schluessel">Anzahl übergebener Schlüssel (gesamt)</label><input id="o_schluessel" type="number" min="0" step="1"></div>
+      <div class="fld wide"><label>Mitvermietete Nebenräume</label>
+        <div class="checks inline">
+          <label><input type="checkbox"> Keller</label>
+          <label><input type="checkbox"> Dachboden</label>
+          <label><input type="checkbox"> Garage / Stellplatz</label>
+          <label><input type="checkbox"> Sonstiges</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>3 &middot; Mietzeit &amp; Kündigung</h2>
+    <div class="radio col toggle-ctrl">
+      <label><input type="radio" name="mz" id="mzUnbe" checked> Unbefristetes Mietverhältnis</label>
+      <label><input type="radio" name="mz" id="mzBe"> Befristetes Mietverhältnis (Zeitmietvertrag)</label>
+    </div>
+    <div class="grid" style="margin-top:10px">
+      <div class="fld"><label for="mz_beginn">Mietbeginn</label><input id="mz_beginn" type="date"></div>
+    </div>
+    <div id="mzBefBlock" class="hidden" style="margin-top:10px">
+      <div class="grid">
+        <div class="fld"><label for="mz_ende">Befristet bis</label><input id="mz_ende" type="date"></div>
+        <div class="fld wide"><label for="mz_grund">Befristungsgrund (&sect; 575 BGB)</label><input id="mz_grund" type="text"></div>
+      </div>
+      <div class="fld" style="margin-top:6px"><span class="hint" style="color:var(--terra-dark);font-weight:600">Achtung:
+        Eine Befristung ist nur mit einem gesetzlichen Befristungsgrund nach &sect; 575 BGB wirksam; ohne wirksamen Grund
+        gilt der Vertrag als unbefristet.</span></div>
+    </div>
+    <p class="clause" style="margin-top:12px">Das unbefristete Mietverhältnis kann nach den gesetzlichen Vorschriften
+       gekündigt werden; für die Kündigung durch den Vermieter gelten die Fristen des &sect; 573c BGB und das
+       Begründungserfordernis des &sect; 573 BGB.</p>
+  </div>
+
+  <div class="panel">
+    <h2>4 &middot; Miete &amp; Zahlung</h2>
+    <div class="grid">
+      <div class="fld"><label for="m_netto">Nettokaltmiete (&euro; / Monat)</label><input id="m_netto" type="text"></div>
+      <div class="fld"><label for="m_faell">Fälligkeit</label><input id="m_faell" type="text" value="3. Werktag des Monats (§ 556b BGB)"></div>
+      <div class="fld"><label for="m_weise">Zahlweise</label><input id="m_weise" type="text" placeholder="z. B. Überweisung / Dauerauftrag"></div>
+      <div class="fld wide"><label for="m_iban">Empfänger-IBAN (Konto des Vermieters)</label><input id="m_iban" type="text"></div>
+    </div>
+    <p class="clause" style="margin-top:10px">Die Miete ist monatlich im Voraus, spätestens bis zum dritten Werktag des
+       Monats, zu zahlen (&sect; 556b BGB). Für die Rechtzeitigkeit genügt die Veranlassung der Zahlung.</p>
+    <div class="hintbox"><b>Hinweis:</b> In Gebieten mit Mietpreisbremse (&sect;&sect; 556d ff. BGB, per Landesverordnung
+      ausgewiesen) gelten zusätzliche Grenzen und Auskunftspflichten &ndash; vor Verwendung anwaltlich prüfen.</div>
+  </div>
+
+  <div class="panel">
+    <h2>5 &middot; Betriebskosten</h2>
+    <p class="clause">Neben der Nettokaltmiete trägt der Mieter die Betriebskosten im Sinne des &sect; 556 BGB in
+       Verbindung mit der Betriebskostenverordnung (BetrKV). Die Umlage erfolgt nach folgender Vereinbarung:</p>
+    <div class="radio col">
+      <label><input type="radio" name="bk"> Vorauszahlung mit jährlicher Abrechnung</label>
+      <label><input type="radio" name="bk"> Pauschale (ohne Abrechnung)</label>
+    </div>
+    <div class="grid" style="margin-top:10px">
+      <div class="fld"><label for="bk_betrag">Monatlicher Betrag (&euro;)</label><input id="bk_betrag" type="text"></div>
+    </div>
+    <div class="hintbox"><b>Hinweis:</b> Über Vorauszahlungen ist jährlich abzurechnen; die Abrechnung muss dem Mieter
+      spätestens binnen 12 Monaten nach Ende des Abrechnungszeitraums zugehen (&sect; 556 Abs. 3 BGB).</div>
+  </div>
+
+  <div class="panel">
+    <h2>6 &middot; Kaution</h2>
+    <div class="grid">
+      <div class="fld"><label for="k_betrag">Kautionsbetrag (&euro;)</label><input id="k_betrag" type="text">
+        <span class="hint">max. 3 Nettokaltmieten &mdash; Nettokaltmiete ohne Betriebs- und Heizkosten.</span></div>
+    </div>
+    <p class="clause" style="margin-top:10px">Der Mieter leistet eine Barkaution als Sicherheit. Die Kaution kann in drei
+       gleichen Monatsraten geleistet werden; die erste Rate ist zu Beginn des Mietverhältnisses fällig (&sect; 551
+       Abs. 2 BGB). Der Vermieter legt die Kaution getrennt von seinem Vermögen und insolvenzfest zum üblichen Zinssatz
+       für Spareinlagen mit dreimonatiger Kündigungsfrist an; die Zinsen stehen dem Mieter zu (&sect; 551 Abs. 3 BGB).</p>
+    <div class="hintbox">Die Einzelheiten regelt die gesonderte <b>Kautionsvereinbarung.html</b> als Anlage zu diesem Vertrag.</div>
+  </div>
+
+  <div class="panel">
+    <h2>7 &middot; Schönheitsreparaturen</h2>
+    <div class="radio col toggle-ctrl">
+      <label><input type="radio" name="sr" id="srReno" checked> Wohnung wird renoviert übergeben</label>
+      <label><input type="radio" name="sr" id="srUnreno"> Wohnung wird unrenoviert übergeben</label>
+    </div>
+
+    <div id="srRenoBlock" style="margin-top:12px">
+      <p class="clause">Die Wohnung wird renoviert übergeben. Der Mieter übernimmt die während der Mietzeit
+         erforderlichen Schönheitsreparaturen (Tapezieren, Anstreichen bzw. Kalken der Wände und Decken, Streichen der
+         Fußböden, Heizkörper, Innentüren sowie der Fenster und Außentüren von innen).</p>
+      <p class="clause"><b>Fristen (weich, ohne starre Bindung):</b> Die Arbeiten sind <b>in der Regel</b> bzw.
+         <b>bei Bedarf</b> auszuführen, wenn der Zustand der Wohnung dies erfordert. Ein fester Fristenplan wird nicht
+         vereinbart; starre Fristen und Endrenovierungsklauseln sind unwirksam.</p>
+    </div>
+
+    <div id="srUnrenoBlock" class="hidden" style="margin-top:12px">
+      <p class="clause">Die Wohnung wird unrenoviert übergeben. Eine Übertragung der Schönheitsreparaturen auf den Mieter
+         ist ohne angemessenen Ausgleich unwirksam (BGH VIII ZR 185/14); der Vermieter trägt die Schönheitsreparaturen
+         selbst.</p>
+      <div class="hintbox">Die Beweislast für den unrenovierten Zustand bei Übergabe trägt der Mieter
+        (BGH VIII ZB 43/23 v. 30.01.2024). Der Übergabezustand sollte im Wohnungsübergabeprotokoll dokumentiert werden.</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>8 &middot; Kleinreparaturen</h2>
+    <div class="grid">
+      <div class="fld"><label for="kr_einzel">Einzelgrenze je Reparatur (&euro;)</label><input id="kr_einzel" type="text" value="100">
+        <span class="hint">Richtwert, kein gesetzlicher Fixbetrag.</span></div>
+      <div class="fld"><label for="kr_jahr">Jahresgrenze</label><input id="kr_jahr" type="text" value="6 % der Jahresbruttokaltmiete">
+        <span class="hint">Richtwert, kein gesetzlicher Fixbetrag.</span></div>
+    </div>
+    <p class="clause" style="margin-top:10px">Der Mieter trägt die Kosten kleiner Instandhaltungen an Teilen der Wohnung,
+       die seinem häufigen Zugriff unterliegen, bis zu den vorgenannten Grenzen. Eine <b>Pflicht des Mieters zur
+       Durchführung</b> der Reparaturen besteht nicht; er trägt lediglich die Kosten. <b>Überschreiten die Kosten einer
+       einzelnen Reparatur die Einzelgrenze, trägt der Vermieter den vollen Betrag</b> &mdash; nicht nur den die Grenze
+       übersteigenden Teil.</p>
+  </div>
+
+  <div class="panel">
+    <h2>9 &middot; Bauliche Veränderungen</h2>
+    <p class="clause">Bauliche Veränderungen der Mietsache durch den Mieter (z. B. Um- und Einbauten) bedürfen der
+       vorherigen Zustimmung des Vermieters in Textform. Bei Beendigung des Mietverhältnisses ist der Mieter auf
+       Verlangen des Vermieters verpflichtet, von ihm vorgenommene Veränderungen zurückzubauen und den ursprünglichen
+       Zustand wiederherzustellen, soweit nichts anderes vereinbart wurde.</p>
+  </div>
+
+  <div class="panel">
+    <h2>10 &middot; Tierhaltung</h2>
+    <p class="clause">Kleintiere wie Ziervögel, Zierfische und Kleinnager sind ohne Zustimmung erlaubt.</p>
+    <p class="clause">Die Haltung von Hunden und Katzen bedarf der vorherigen Zustimmung des Vermieters. Die Zustimmung
+       darf nur aus sachlichem Grund verweigert werden; im Übrigen entscheidet der Vermieter nach billigem Ermessen
+       unter Abwägung der beiderseitigen Interessen.</p>
+    <div class="hintbox">Ein generelles, ausnahmsloses Hunde- und Katzenverbot in Formularmietverträgen ist unwirksam
+      (BGH VIII ZR 168/12).</div>
+  </div>
+
+  <div class="panel">
+    <h2>11 &middot; Untervermietung</h2>
+    <p class="clause">Der Mieter darf den Wohnraum nur mit vorheriger Erlaubnis des Vermieters ganz oder teilweise einem
+       Dritten überlassen. Hat der Mieter ein berechtigtes Interesse an der Überlassung eines Teils des Wohnraums, kann
+       er die Erlaubnis verlangen (&sect; 553 BGB).</p>
+    <div class="hintbox">&sect; 553 BGB ist zwingend; bei berechtigtem Interesse besteht ein Anspruch auf Erlaubnis. Eine
+      rein gewinnorientierte Untervermietung ist kein berechtigtes Interesse (BGH VIII ZR 228/23 v. 28.01.2026).</div>
+  </div>
+
+  <div class="panel">
+    <h2>12 &middot; Hausordnung</h2>
+    <div class="checks">
+      <label><input type="checkbox"> Eine Hausordnung ist diesem Vertrag als Anlage beigefügt und Vertragsbestandteil.</label>
+    </div>
+    <div class="hintbox">Die Hausordnung ist nur wirksam, wenn sie als beigefügte und im Vertrag in Bezug genommene
+      Anlage vereinbart wird. Muster: <b>Hausordnung.html</b>.</div>
+  </div>
+
+  <div class="panel">
+    <h2>13 &middot; Schlüssel</h2>
+    <div class="tablescroll">
+    <table>
+      <thead><tr><th style="min-width:220px">Art</th><th style="max-width:140px">Anzahl</th></tr></thead>
+      <tbody>
+        <tr><td>Haustürschlüssel</td><td><input type="number" min="0" step="1" aria-label="Anzahl Haustürschlüssel"></td></tr>
+        <tr><td>Wohnungstürschlüssel</td><td><input type="number" min="0" step="1" aria-label="Anzahl Wohnungstürschlüssel"></td></tr>
+        <tr><td>Briefkastenschlüssel</td><td><input type="number" min="0" step="1" aria-label="Anzahl Briefkastenschlüssel"></td></tr>
+        <tr><td>Kellerschlüssel</td><td><input type="number" min="0" step="1" aria-label="Anzahl Kellerschlüssel"></td></tr>
+        <tr><td><input type="text" placeholder="Sonstige (z. B. Garage, Tor)" aria-label="Sonstige Schlüsselart"></td><td><input type="number" min="0" step="1" aria-label="Anzahl sonstige Schlüssel"></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>14 &middot; Rückgabe der Wohnung</h2>
+    <p class="clause">Bei Beendigung des Mietverhältnisses gibt der Mieter die Wohnung vollständig geräumt und mit allen
+       Schlüsseln zurück. Der Zustand der Wohnung sowie die Zählerstände werden bei der Rückgabe gemeinsam
+       dokumentiert.</p>
+    <div class="hintbox">Für die Rückgabe ist das Muster <b>Wohnungsübergabeprotokoll.html</b> zu verwenden.</div>
+  </div>
+
+  <div class="panel">
+    <h2>15 &middot; Schlussbestimmungen</h2>
+    <p class="clause">Änderungen und Ergänzungen dieses Vertrags bedürfen der Textform. Sollte eine Bestimmung dieses
+       Vertrags unwirksam sein oder werden, so bleibt die Wirksamkeit der übrigen Bestimmungen unberührt; an die Stelle
+       der unwirksamen Regelung tritt die gesetzliche Regelung.</p>
+    <p class="clause" style="font-weight:600;color:var(--terra-dark);margin-bottom:6px">Anlagen zu diesem Vertrag:</p>
+    <div class="checks">
+      <label><input type="checkbox"> Hausordnung</label>
+      <label><input type="checkbox"> Wohnungsübergabeprotokoll</label>
+      <label><input type="checkbox"> Kautionsvereinbarung</label>
+      <label><input type="checkbox"> Mieter-Selbstauskunft</label>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>16 &middot; Unterschriften</h2>
+    <p class="clause" style="margin-top:-2px">Ort, Datum sowie Unterschrift beider Parteien.</p>
+    <div class="sig-grid">
+      <div class="sig">
+        <div class="line"></div><div class="cap">Ort, Datum &mdash; Vermieter / Eigentümer</div>
+        <div class="line" style="margin-top:14px"></div><div class="cap">Unterschrift Vermieter</div>
+      </div>
+      <div class="sig">
+        <div class="line"></div><div class="cap">Ort, Datum &mdash; Mieter</div>
+        <div class="line" style="margin-top:14px"></div><div class="cap">Unterschrift Mieter(n)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toolbar noprint screen-only">
+    <button class="btn" onclick="window.print()">Drucken / als PDF speichern</button>
+  </div>
+
+  <footer>
+    <span class="screen-only"><strong>Stand: 08/2026</strong> &middot; Muster ohne Gewähr &ndash; kein Ersatz für Rechtsberatung. Vollständiger Hinweis siehe oben.<br>
+    &copy; DienerHaus GmbH &middot; dienerhaus.de</span>
+    <span class="print-only">Muster ohne Gew&auml;hr &middot; Stand 08/2026 &middot; DienerHaus</span>
+  </footer>
+</div>
+
+<script>
+"use strict";
+// 3 · Befristung ein-/ausblenden
+var mzBe = document.getElementById("mzBe"),
+    mzUnbe = document.getElementById("mzUnbe"),
+    mzBefBlock = document.getElementById("mzBefBlock");
+function applyMz(){ mzBefBlock.classList.toggle("hidden", !mzBe.checked); }
+mzBe.addEventListener("change", applyMz);
+mzUnbe.addEventListener("change", applyMz);
+applyMz();
+
+// 7 · Schönheitsreparaturen: renoviert / unrenoviert
+var srReno = document.getElementById("srReno"),
+    srUnreno = document.getElementById("srUnreno"),
+    srRenoBlock = document.getElementById("srRenoBlock"),
+    srUnrenoBlock = document.getElementById("srUnrenoBlock");
+function applySr(){
+  var reno = srReno.checked;
+  srRenoBlock.classList.toggle("hidden", !reno);
+  srUnrenoBlock.classList.toggle("hidden", reno);
+}
+srReno.addEventListener("change", applySr);
+srUnreno.addEventListener("change", applySr);
+applySr();
+</script>

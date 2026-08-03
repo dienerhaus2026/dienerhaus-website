@@ -133,6 +133,7 @@ section[id], #top { scroll-margin-top: 96px; }
 .nav-links a:nth-child(5) { animation-delay: 0.43s; }
 .nav-links a:nth-child(6) { animation-delay: 0.50s; }
 .nav-links a:nth-child(7) { animation-delay: 0.57s; }
+.nav-links a:nth-child(8) { animation-delay: 0.64s; }
 
 @media (prefers-reduced-motion: reduce) {
   .nav-links a, .logo { animation: none; }
@@ -818,4 +819,67 @@ section[id], #top { scroll-margin-top: 96px; }
 
 @media (max-width: 560px) {
   .leistungen-grid { grid-template-columns: 1fr; }
+}
+
+/* ============ Vermieter-Toolkit (Landingpage) ============ */
+.toolkit-intro { max-width: 640px; }
+.toolkit-note {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: #93391E;
+  border: 1px solid #E0B9AC;
+  background: rgba(187, 74, 44, 0.06);
+  padding: 6px 12px;
+  border-radius: 2px;
+}
+.toolkit-group { margin-top: 56px; }
+.toolkit-group:first-of-type { margin-top: 40px; }
+.toolkit-group-head { margin-bottom: 22px; }
+.toolkit-group-eyebrow {
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  color: #BB4A2C;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.toolkit-group-title { font-size: 24px; font-weight: 800; margin: 0; }
+.toolkit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
+  gap: 24px;
+}
+.doc-card { display: flex; flex-direction: column; }
+.doc-card .leistung-desc { flex: 1 1 auto; }
+.doc-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #BB4A2C;
+}
+.doc-link:hover { color: #93391E; }
+.doc-flag {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #8A6A2E;
+}
+.doc-flag::before { content: "\26A0  "; }
+.toolkit-disclaimer p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #3A372F;
+  margin: 0 0 14px;
+  max-width: 820px;
+}
+.toolkit-disclaimer p:last-child { margin-bottom: 0; }
+.toolkit-disclaimer strong { color: #1B1A18; }
+
+@media (max-width: 560px) {
+  .toolkit-grid { grid-template-columns: 1fr; }
 }
