@@ -405,8 +405,11 @@ section[id], #top { scroll-margin-top: 96px; }
 /* ============ Testimonials ============ */
 .testimonial-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 28px;
+}
+@media (min-width: 861px) and (max-width: 1080px) {
+  .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
 }
 .testimonial-card { background: #EFE9DE; padding: 28px; border-radius: 2px; display: flex; flex-direction: column; }
 .testimonial-quote { font-size: 15px; line-height: 1.6; color: #3A372F; margin-bottom: 16px; font-style: italic; }
@@ -835,6 +838,22 @@ section[id], #top { scroll-margin-top: 96px; }
   padding: 6px 12px;
   border-radius: 2px;
 }
+/* Toolkit-Video (Platzhalter — spaeter <video> statt Label) */
+.video-frame {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  background: #1B1A18;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.video-frame video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.video-frame-label { color: #C9C4B8; font-size: 15px; letter-spacing: .04em; }
 .toolkit-group { margin-top: 56px; }
 .toolkit-group:first-of-type { margin-top: 40px; }
 .toolkit-group-head { margin-bottom: 22px; }
