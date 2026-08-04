@@ -885,6 +885,7 @@ section[id], #top { scroll-margin-top: 96px; }
   color: #BB4A2C;
 }
 .doc-link:hover { color: #93391E; }
+.doc-link + .doc-link { display: block; margin-top: 8px; }
 .doc-flag {
   display: block;
   margin-top: 10px;
