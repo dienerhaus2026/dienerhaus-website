@@ -171,12 +171,27 @@
   var kontaktForm = document.getElementById('kontakt-form');
   var kontaktStatus = document.getElementById('kontakt-form-status');
 
+  function composeMessage() {
+    var parts = [];
+    var subjectLine = kontaktForm.getAttribute('data-subject');
+    if (subjectLine) parts.push(subjectLine);
+    var extras = [];
+    kontaktForm.querySelectorAll('[data-extra]').forEach(function (el) {
+      var v = (el.value || '').trim();
+      if (v) extras.push(el.getAttribute('data-extra') + ': ' + v);
+    });
+    if (extras.length) parts.push(extras.join('\n'));
+    parts.push(kontaktForm.message.value);
+    return parts.join('\n\n');
+  }
+
   function openMailtoFallback() {
     var name = encodeURIComponent(kontaktForm.name.value);
     var email = encodeURIComponent(kontaktForm.email.value);
-    var message = encodeURIComponent(kontaktForm.message.value);
+    var message = encodeURIComponent(composeMessage());
+    var subject = encodeURIComponent(kontaktForm.getAttribute('data-mail-subject') || 'Kontaktanfrage von der Website');
     var body = 'Name: ' + name + '%0D%0AE-Mail: ' + email + '%0D%0A%0D%0A' + message;
-    window.location.href = 'mailto:info@dienerhaus.de?subject=Kontaktanfrage%20von%20der%20Website&body=' + body;
+    window.location.href = 'mailto:info@dienerhaus.de?subject=' + subject + '&body=' + body;
   }
 
   function setStatus(text, kind) {
@@ -193,7 +208,7 @@
       var payload = {
         name: kontaktForm.name.value,
         email: kontaktForm.email.value,
-        message: kontaktForm.message.value,
+        message: composeMessage(),
         _hp: kontaktForm._hp.value
       };
 
