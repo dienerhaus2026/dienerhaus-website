@@ -966,3 +966,7 @@ section[id], #top { scroll-margin-top: 96px; }
 .kontakt-grid > * { min-width: 0; }
 .kontakt-form-card { min-width: 0; }
 .kontakt-form input, .kontakt-form select, .kontakt-form textarea { width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; }
+
+/* Hausverwaltung: einheitliche Inhaltskante in hellen Abschnitten */
+.section-alt > .hv-wrap { max-width: 1088px; margin-left: auto; margin-right: auto; }
+.hv-note { margin-left: 0; margin-right: 0; }
