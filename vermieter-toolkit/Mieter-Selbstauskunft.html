@@ -78,8 +78,9 @@
     <span class="brand">DienerHaus</span>
     <div class="kicker">Vermieter-Toolkit &middot; DienerHaus</div>
     <h1>Mieter-Selbstauskunft</h1>
-    <p>Freiwillige Angaben des Mietinteressenten zur Prüfung des Mietinteresses. Es werden ausschließlich Daten
-       erhoben, die für die Vermietungsentscheidung erforderlich und datenschutzrechtlich zulässig sind.</p>
+    <p>Angaben des Mietinteressenten, wenn er die Wohnung mieten möchte – nicht schon bei der Besichtigung. Abgefragt
+       werden nur Daten, die nach der Orientierungshilfe der Datenschutzbehörden (Version 2.0, Januar 2026) in dieser
+       Phase zulässig sind.</p>
   </header>
 
   <div class="disclaimer screen-only">
@@ -87,14 +88,13 @@
     Gefahr; im Zweifel anwaltlich prüfen lassen. Diese Vorlage wird kostenlos und unverbindlich zur Verfügung gestellt.
     Für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit sowie für Vorsatz und grobe
     Fahrlässigkeit haften wir nach den gesetzlichen Bestimmungen; ebenso bei der Verletzung wesentlicher
-    Vertragspflichten. Im Übrigen ist die Haftung ausgeschlossen. <strong>Stand: 08/2026.</strong>
+    Vertragspflichten. Im Übrigen ist die Haftung ausgeschlossen. <strong>Stand: 10/2026.</strong>
   </div>
 
   <div class="panel">
     <h2>1 &middot; Angaben zur Person</h2>
     <div class="grid">
       <div class="fld"><label>Name, Vorname</label><input type="text"></div>
-      <div class="fld"><label>Geburtsdatum</label><input type="date"></div>
       <div class="fld wide"><label>Aktuelle Anschrift (Straße, Hausnummer, PLZ, Ort)</label><input type="text"></div>
       <div class="fld"><label>Telefon</label><input type="tel"></div>
       <div class="fld"><label>E-Mail</label><input type="email"></div>
@@ -106,14 +106,9 @@
     <div class="grid">
       <div class="fld"><label>Ausgeübter Beruf</label><input type="text"></div>
       <div class="fld"><label>Arbeitgeber</label><input type="text"></div>
-      <div class="fld"><label>Beschäftigungsverhältnis</label>
-        <div class="radio">
-          <label><input type="radio" name="besch"> unbefristet</label>
-          <label><input type="radio" name="besch"> befristet</label>
-        </div>
-      </div>
-      <div class="fld"><label>Beschäftigt seit</label><input type="month"></div>
-      <div class="fld wide"><label>Monatliches Nettoeinkommen (Betrag in &euro; oder Rahmen)</label><input type="text" placeholder="z. B. 2.800 € oder 2.500–3.000 €"></div>
+      <div class="fld wide"><label>Monatliches Nettoeinkommen des Haushalts (Betrag in &euro; oder „über …“)</label><input type="text" placeholder="z. B. 2.800 € oder über 2.500 €"></div>
+      <div class="fld wide"><label>Davon nach laufenden Verpflichtungen für die Miete verfügbar (Betrag in &euro;)</label><input type="text"></div>
+      <div class="fld wide"><span class="hint">Zahlt eine öffentliche Stelle die Miete vollständig direkt an den Vermieter, müssen Sie die Fragen zum Einkommen nicht beantworten. Ein Nachweis der Mietübernahme genügt.</span></div>
     </div>
   </div>
 
@@ -127,55 +122,51 @@
           <label><input type="radio" name="tier"> ja</label>
         </div>
       </div>
-      <div class="fld wide"><label>Falls Haustiere: welche?</label><input type="text"></div>
+      <div class="fld wide"><label>Falls Haustiere: welche? (Kleintiere wie Fische oder Hamster müssen nicht angegeben werden)</label><input type="text"></div>
     </div>
   </div>
 
   <div class="panel">
-    <h2>4 &middot; Bisheriges Mietverhältnis</h2>
-    <div class="grid">
-      <div class="fld wide"><label>Derzeitiger Vermieter (Name)</label><input type="text"></div>
-      <div class="fld wide"><label>Anschrift des derzeitigen Vermieters</label><input type="text"></div>
-    </div>
+    <h2>4 &middot; Zahlungsfähigkeit</h2>
     <div style="margin-top:8px">
       <div class="qrow">
-        <div class="q">Bestehen gegenüber dem derzeitigen Vermieter Mietrückstände?</div>
-        <div class="radio"><label><input type="radio" name="rueck"> nein</label><label><input type="radio" name="rueck"> ja</label></div>
-      </div>
-      <div class="qrow">
-        <div class="q">Wurde in den letzten Jahren ein Räumungstitel gegen Sie erwirkt <b>(mit Mietbezug)</b>?</div>
+        <div class="q">Wurde in den letzten fünf Jahren gegen Sie ein Räumungstitel wegen Mietrückständen erwirkt?</div>
         <div class="radio"><label><input type="radio" name="raeum"> nein</label><label><input type="radio" name="raeum"> ja</label></div>
       </div>
       <div class="qrow">
-        <div class="q">Haben Sie in den letzten Jahren eine eidesstattliche Versicherung abgegeben <b>(mit Mietbezug)</b>?</div>
-        <div class="radio"><label><input type="radio" name="eid"> nein</label><label><input type="radio" name="eid"> ja</label></div>
-      </div>
-      <div class="qrow">
-        <div class="q">Läuft oder lief ein Privatinsolvenzverfahren <b>(mit Mietbezug)</b>?</div>
+        <div class="q">Ist über Ihr Vermögen ein Verbraucherinsolvenzverfahren eröffnet und noch nicht abgeschlossen?</div>
         <div class="radio"><label><input type="radio" name="inso"> nein</label><label><input type="radio" name="inso"> ja</label></div>
       </div>
+      <div class="qrow">
+        <div class="q">Haben Sie in den letzten zwei Jahren eine Vermögensauskunft (früher: eidesstattliche Versicherung) abgegeben?</div>
+        <div class="radio"><label><input type="radio" name="eid"> nein</label><label><input type="radio" name="eid"> ja</label></div>
+      </div>
     </div>
+    <p class="hint" style="font-size:12px;color:var(--ink-soft);margin:10px 0 0">Erst wenn sich der Vermieter für Sie entschieden hat, kann er kurz vor Vertragsschluss einen
+      Einkommensnachweis (nicht nötige Angaben geschwärzt) und eine von Ihnen selbst eingeholte, auf die Wohnungssuche
+      zugeschnittene Bonitätsauskunft erbitten. Kontaktdaten früherer Vermieter und eine
+      Mietschuldenfreiheitsbescheinigung werden nicht verlangt.</p>
   </div>
 
   <div class="panel">
-    <h2>5 &middot; Datenschutz &amp; Einwilligung</h2>
+    <h2>5 &middot; Datenschutz</h2>
     <div class="privacy">
-      <b>Verantwortlicher:</b> ____________________ (Name/Anschrift des Vermieters).<br><br>
+      <b>Verantwortlicher:</b> ____________________ (Name, Anschrift, Telefon/E-Mail des Vermieters).<br><br>
+      <b>Datenschutzbeauftragter (falls benannt):</b> ____________________<br><br>
+      <b>Empfänger:</b> Ihre Angaben gibt der Vermieter nur weiter, soweit nötig, z. B. an eine beauftragte Hausverwaltung oder einen beauftragten Makler: ____________________ (sonst „keine“).<br><br>
       <b>Zweck &amp; Rechtsgrundlage:</b> Die Angaben werden ausschließlich zur Prüfung Ihres Mietinteresses und zur
       Vorbereitung eines möglichen Mietvertrags verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO
-      (vorvertragliche Maßnahmen) für die erforderlichen Angaben; ergänzende freiwillige Angaben und die nachstehende
-      Einwilligung stützen sich auf Art. 6 Abs. 1 lit. a DSGVO.<br><br>
-      <b>Freiwilligkeit:</b> Die Angaben sind freiwillig; ohne die für die Vermietungsentscheidung erforderlichen
-      Angaben kann eine Bewerbung ggf. nicht berücksichtigt werden.<br><br>
-      <b>Löschung:</b> Kommt kein Mietvertrag zustande, werden Ihre Daten unverzüglich gelöscht bzw. die Unterlagen
-      vernichtet &mdash; ausdrücklich auch bei nicht berücksichtigten (abgelehnten) Bewerbern. Bei Vertragsabschluss
+      (vorvertragliche Maßnahmen). Eine Einwilligung wird nicht eingeholt.<br><br>
+      <b>Freiwilligkeit:</b> Sie müssen die Fragen nicht beantworten; ohne die für die Vermietungsentscheidung
+      erforderlichen Angaben kann eine Bewerbung ggf. nicht berücksichtigt werden.<br><br>
+      <b>Löschung:</b> Kommt kein Mietvertrag zustande, werden Ihre Daten gelöscht bzw. die Unterlagen vernichtet,
+      sobald sie nicht mehr benötigt werden, spätestens nach sechs Monaten. Bei Vertragsabschluss
       erfolgt die Speicherung für die Dauer des Mietverhältnisses und der gesetzlichen Aufbewahrungsfristen.<br><br>
-      <b>Ihre Rechte:</b> Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung und Widerspruch sowie
-      ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde. Eine erteilte Einwilligung können Sie jederzeit mit
-      Wirkung für die Zukunft widerrufen.
+      <b>Ihre Rechte:</b> Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch sowie
+      ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde.
     </div>
     <label class="consent"><input type="checkbox"> Ich habe die vorstehenden Angaben nach bestem Wissen wahrheitsgemäß
-      gemacht und willige in die Verarbeitung meiner Daten zum genannten Zweck ein.</label>
+      gemacht.</label>
     <div class="sig">
       <div class="line"></div><div class="cap">Ort, Datum</div>
       <div class="line" style="margin-top:14px"></div><div class="cap">Unterschrift Mietinteressent</div>
@@ -187,8 +178,8 @@
   </div>
 
   <footer>
-    <span class="screen-only"><strong>Stand: 08/2026</strong> &middot; Muster ohne Gewähr &ndash; kein Ersatz für Rechtsberatung. Vollständiger Hinweis siehe oben.<br>
+    <span class="screen-only"><strong>Stand: 10/2026</strong> &middot; Muster ohne Gewähr &ndash; kein Ersatz für Rechtsberatung. Vollständiger Hinweis siehe oben.<br>
     &copy; DienerHaus GmbH &middot; dienerhaus.de</span>
-    <span class="print-only">Stand 08/2026 &middot; DienerHaus</span>
+    <span class="print-only">Stand 10/2026 &middot; DienerHaus</span>
   </footer>
 </div>
