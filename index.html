@@ -15,11 +15,11 @@
 <meta property="og:url" content="https://dienerhaus.de/">
 <meta property="og:title" content="DienerHaus GmbH — Bauträger in Jockgrim & der Südpfalz">
 <meta property="og:description" content="DienerHaus GmbH ist Ihr Bauträger in Jockgrim und der Südpfalz — wir entwickeln, bauen und begleiten Wohn- und Kapitalanlage-Immobilien von der ersten Idee bis zur Schlüsselübergabe.">
-<meta property="og:image" content="https://dienerhaus.de/assets/DienerHaus-Logo.jpg">
+<meta property="og:image" content="https://dienerhaus.de/assets/og-dienerhaus.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="DienerHaus GmbH — Bauträger in Jockgrim & der Südpfalz">
 <meta name="twitter:description" content="DienerHaus GmbH ist Ihr Bauträger in Jockgrim und der Südpfalz.">
-<meta name="twitter:image" content="https://dienerhaus.de/assets/DienerHaus-Logo.jpg">
+<meta name="twitter:image" content="https://dienerhaus.de/assets/og-dienerhaus.jpg">
 
 <script type="application/ld+json">
 {
@@ -53,12 +53,12 @@
   <nav class="nav-links" id="nav-links">
     <a href="#ueber-uns">Über uns</a>
     <a href="#leistungen">Leistungen</a>
-    <a href="hausverwaltung.html">Hausverwaltung</a>
+    <a href="/hausverwaltung">Hausverwaltung</a>
     <a href="#zum-verkauf">Zum Verkauf</a>
     <a href="#projekte">Projekte</a>
     <a href="#finanzierung">Finanzierung</a>
     <a href="#karriere">Karriere</a>
-    <a href="vermieter-toolkit.html">Vermieter-Toolkit</a>
+    <a href="/vermieter-toolkit">Vermieter-Toolkit</a>
     <a href="#kontakt" class="btn-nav">Kontakt</a>
   </nav>
   <button class="nav-toggle" id="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links">
@@ -77,8 +77,7 @@
     </div>
   </div>
   <div class="hero-visual">
-    <video autoplay loop muted playsinline id="hero-video" style="display:none;"></video>
-    <span class="hero-placeholder-label">VIDEO-PLATZHALTER (später austauschbar)</span>
+    <video autoplay loop muted playsinline preload="metadata" poster="assets/hero-maximilianstrasse-poster.jpg" id="hero-video" style="display:none;" aria-hidden="true"></video>
   </div>
 </section>
 
@@ -118,7 +117,7 @@
   <h2 class="h2-sm" id="team-title">Ihre Kontakte bei DienerHaus</h2>
   <div class="team-grid">
     <div class="team-card">
-      <img class="avatar-img" src="assets/sergej-diener-geschaeftsfuehrer.jpg" alt="Sergej Diener, Geschäftsführer der DienerHaus GmbH">
+      <img class="avatar-img" src="assets/sergej-diener-geschaeftsfuehrer-2026.jpg" alt="Sergej Diener, Geschäftsführer der DienerHaus GmbH">
       <div class="team-name">Sergej Diener</div>
       <div class="team-role">Geschäftsführung</div>
     </div>
@@ -126,11 +125,6 @@
       <img class="avatar-img" src="assets/bauleiter-cartoon.svg" alt="Karikatur eines Bauleiters — die Position wird je nach Projekt individuell besetzt">
       <div class="team-name">Bauleitung</div>
       <div class="team-role">Wird je nach Projekt individuell besetzt</div>
-    </div>
-    <div class="team-card">
-      <div class="avatar-slot"></div>
-      <div class="team-name">Ansprechpartner folgt</div>
-      <div class="team-role">Vertrieb &amp; Beratung</div>
     </div>
   </div>
 </section>
@@ -152,7 +146,7 @@
     </div>
     <div class="leistung-card">
       <div class="accent-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19 9 13 13 16 20 7"/><path d="M15 7h5v5"/></svg></div>
-      <div class="leistung-title">Kapitalanlage-Beratung</div>
+      <div class="leistung-title">Kapitalanlage-Immobilien</div>
       <div class="leistung-desc">Objekte und Konzepte für Anleger mit Rendite- und Steuerfokus.</div>
     </div>
     <div class="leistung-card">
@@ -177,8 +171,8 @@
       <li>Individuelles Angebot — unverbindlich und kostenfrei</li>
     </ul>
     <div class="hv-teaser-ctas">
-      <a href="hausverwaltung.html" class="btn btn-dark">Mehr zur Hausverwaltung</a>
-      <a href="hausverwaltung.html#anfrage" class="btn btn-outline-dark">Unverbindlich anfragen</a>
+      <a href="/hausverwaltung" class="btn btn-dark">Mehr zur Hausverwaltung</a>
+      <a href="/hausverwaltung#anfrage" class="btn btn-outline-dark">Unverbindlich anfragen</a>
     </div>
   </div>
 </section>
@@ -188,7 +182,7 @@
   <div class="eyebrow">ZUM VERKAUF</div>
   <h2 class="h2-max560" id="zum-verkauf-title">Aktuell verfügbar</h2>
   <div class="verkauf-card">
-    <div class="verkauf-img lazy-bg" data-bg="assets/projekt-franz-marc-ring-woerth.jpg"></div>
+    <div class="verkauf-img lazy-bg" data-bg="assets/projekt-franz-marc-ring-woerth.jpg" role="img" aria-label="Franz-Marc-Ring 15, Wörth am Rhein"></div>
     <div class="verkauf-body">
       <div class="verkauf-status">ZUM VERKAUF · PROVISIONSFREI</div>
       <h3 class="verkauf-name">Franz-Marc-Ring 15</h3>
@@ -209,14 +203,14 @@
       <p class="verkauf-desc">Gepflegtes, 2016 von DienerHaus errichtetes Einfamilienhaus in einem neueren Wohngebiet in Wörth am Rhein — provisionsfrei für Käufer. Verkauf durch die privaten Eigentümer, Präsentation und Verkaufsbegleitung durch DienerHaus. Weitere Details zu Grundriss, Ausstattung und Besichtigungsterminen erhalten Sie im Exposé oder direkt bei uns.</p>
       <div class="verkauf-ctas">
         <a href="assets/downloads/DienerHaus-Expose-Franz-Marc-Ring-15.pdf" target="_blank" rel="noopener" class="btn btn-primary">Exposé (PDF) herunterladen</a>
-        <a href="bewertung-franz-marc-ring-15.html" class="btn btn-outline-dark">Werteinschätzung ansehen</a>
-        <a href="#kontakt" class="btn btn-dark">Anfrage stellen</a>
+        <a href="/bewertung-franz-marc-ring-15" class="btn btn-outline-dark">Werteinschätzung ansehen</a>
+        <a href="#kontakt" class="btn btn-dark js-objekt-anfrage" data-objekt="Franz-Marc-Ring 15, Wörth am Rhein · 755.000 €" data-interesse="Kauf einer Immobilie / Wohnung (Eigennutzung)" aria-label="Anfrage zu Franz-Marc-Ring 15, Wörth am Rhein stellen">Zu diesem Objekt anfragen</a>
       </div>
     </div>
   </div>
 
   <div class="verkauf-card">
-    <div class="verkauf-img lazy-bg" data-bg="assets/projekt-maximilianstrasse-jockgrim-crop.jpg"></div>
+    <div class="verkauf-img lazy-bg" data-bg="assets/projekt-maximilianstrasse-jockgrim-crop.jpg" role="img" aria-label="Maximilianstraße 21–23, Jockgrim"></div>
     <div class="verkauf-body">
       <div class="verkauf-status">ZUM VERKAUF · PROVISIONSFREI</div>
       <h3 class="verkauf-name">Maximilianstraße 21–23</h3>
@@ -237,13 +231,13 @@
       <p class="verkauf-desc">Neubau-Eigentumswohnungen als Kapitalanlage – aktuell vermietet, mit eigener Photovoltaik-Anlage und Energieeffizienzklasse A+. Die Wohnungen (2 bis 4 Zimmer) werden einzeln verkauft; Preis und Verfügbarkeit je Einheit erhalten Sie im Exposé oder in der individuellen Verkaufsanzeige.</p>
       <div class="verkauf-ctas">
         <a href="assets/downloads/DienerHaus-Expose-Maximilianstrasse-21-23.pdf" target="_blank" rel="noopener" class="btn btn-primary">Exposé (PDF) herunterladen</a>
-        <a href="#kontakt" class="btn btn-dark">Anfrage stellen</a>
+        <a href="#kontakt" class="btn btn-dark js-objekt-anfrage" data-objekt="Maximilianstraße 21–23, Jockgrim (Gesamtobjekt, 18 Wohnungen)" data-interesse="Kauf als Kapitalanlage" aria-label="Anfrage zu Maximilianstraße 21–23, Jockgrim stellen">Zu diesem Objekt anfragen</a>
       </div>
     </div>
   </div>
 
   <div class="verkauf-card">
-    <div class="verkauf-img lazy-bg" data-bg="assets/projekt-maximilianstrasse-we13-crop.jpg"></div>
+    <div class="verkauf-img lazy-bg" data-bg="assets/projekt-maximilianstrasse-we13-crop.jpg" role="img" aria-label="Wohnung Nr. 13, Maximilianstraße 21–23, Jockgrim"></div>
     <div class="verkauf-body">
       <div class="verkauf-status">ZUM VERKAUF · PROVISIONSFREI</div>
       <h3 class="verkauf-name">Wohnung Nr. 13</h3>
@@ -264,13 +258,13 @@
       <p class="verkauf-desc">Helle 2-Zimmer-Dachgeschosswohnung mit Tiefgaragenstellplatz – aktuell vermietet und damit ab Tag eins eine funktionierende Kapitalanlage mit 4,0 % Bruttomietrendite. Alle Details zu Rendite, Abschreibung und Ausstattung finden Sie im Exposé.</p>
       <div class="verkauf-ctas">
         <a href="assets/downloads/DienerHaus-Expose-Wohnung-13-Maximilianstrasse.pdf" target="_blank" rel="noopener" class="btn btn-primary">Exposé (PDF) herunterladen</a>
-        <a href="#kontakt" class="btn btn-dark">Anfrage stellen</a>
+        <a href="#kontakt" class="btn btn-dark js-objekt-anfrage" data-objekt="Wohnung Nr. 13 · Maximilianstraße 21–23, Jockgrim · 299.100 €" data-interesse="Kauf als Kapitalanlage" aria-label="Anfrage zu Wohnung Nr. 13, Maximilianstraße 21–23 stellen">Zu diesem Objekt anfragen</a>
       </div>
     </div>
   </div>
 
   <div class="verkauf-card">
-    <div class="verkauf-img lazy-bg" data-bg="assets/projekt-maximilianstrasse-we17-crop.jpg"></div>
+    <div class="verkauf-img lazy-bg" data-bg="assets/projekt-maximilianstrasse-we17-crop.jpg" role="img" aria-label="Wohnung Nr. 17, Maximilianstraße 21–23, Jockgrim"></div>
     <div class="verkauf-body">
       <div class="verkauf-status">ZUM VERKAUF · PROVISIONSFREI</div>
       <h3 class="verkauf-name">Wohnung Nr. 17</h3>
@@ -291,13 +285,13 @@
       <p class="verkauf-desc">Großzügige 2-Zimmer-Dachgeschosswohnung mit Tiefgaragenstellplatz – aktuell vermietet und damit ab Tag eins eine funktionierende Kapitalanlage mit 4,0 % Bruttomietrendite. Alle Details zu Rendite, Abschreibung und Ausstattung finden Sie im Exposé.</p>
       <div class="verkauf-ctas">
         <a href="assets/downloads/DienerHaus-Expose-Wohnung-17-Maximilianstrasse.pdf" target="_blank" rel="noopener" class="btn btn-primary">Exposé (PDF) herunterladen</a>
-        <a href="#kontakt" class="btn btn-dark">Anfrage stellen</a>
+        <a href="#kontakt" class="btn btn-dark js-objekt-anfrage" data-objekt="Wohnung Nr. 17 · Maximilianstraße 21–23, Jockgrim · 350.700 €" data-interesse="Kauf als Kapitalanlage" aria-label="Anfrage zu Wohnung Nr. 17, Maximilianstraße 21–23 stellen">Zu diesem Objekt anfragen</a>
       </div>
     </div>
   </div>
 
   <div class="verkauf-card">
-    <div class="verkauf-img lazy-bg" data-bg="assets/projekt-maximilianstrasse-we8-crop.jpg"></div>
+    <div class="verkauf-img lazy-bg" data-bg="assets/projekt-maximilianstrasse-we8-crop.jpg" role="img" aria-label="Wohnung Nr. 8, Maximilianstraße 21–23, Jockgrim"></div>
     <div class="verkauf-body">
       <div class="verkauf-status">ZUM VERKAUF · PROVISIONSFREI</div>
       <h3 class="verkauf-name">Wohnung Nr. 8</h3>
@@ -318,13 +312,13 @@
       <p class="verkauf-desc">Großzügige 3-Zimmer-Wohnung im 1. Obergeschoss mit Balkon und Tiefgaragenstellplatz – seit November 2025 zuverlässig vermietet und damit eine funktionierende Kapitalanlage mit 4,0 % Bruttomietrendite ohne Erstvermietungsrisiko. Alle Details zu Rendite, Abschreibung und Ausstattung finden Sie im Exposé.</p>
       <div class="verkauf-ctas">
         <a href="assets/downloads/DienerHaus-Expose-Wohnung-8-Maximilianstrasse.pdf" target="_blank" rel="noopener" class="btn btn-primary">Exposé (PDF) herunterladen</a>
-        <a href="#kontakt" class="btn btn-dark">Anfrage stellen</a>
+        <a href="#kontakt" class="btn btn-dark js-objekt-anfrage" data-objekt="Wohnung Nr. 8 · Maximilianstraße 21–23, Jockgrim · 422.700 €" data-interesse="Kauf als Kapitalanlage" aria-label="Anfrage zu Wohnung Nr. 8, Maximilianstraße 21–23 stellen">Zu diesem Objekt anfragen</a>
       </div>
     </div>
   </div>
 
   <div class="verkauf-card">
-    <div class="verkauf-img lazy-bg" data-bg="assets/projekt-maximilianstrasse-we18-crop.jpg"></div>
+    <div class="verkauf-img lazy-bg" data-bg="assets/projekt-maximilianstrasse-we18-crop.jpg" role="img" aria-label="Wohnung Nr. 18, Maximilianstraße 21–23, Jockgrim"></div>
     <div class="verkauf-body">
       <div class="verkauf-status">ZUM VERKAUF · PROVISIONSFREI</div>
       <h3 class="verkauf-name">Wohnung Nr. 18</h3>
@@ -345,13 +339,13 @@
       <p class="verkauf-desc">Helle 2-Zimmer-Dachgeschosswohnung mit Balkon und Tiefgaragenstellplatz – seit November 2025 vermietet und damit eine funktionierende Kapitalanlage mit 4,0 % Bruttomietrendite ohne Erstvermietungsrisiko. Alle Details zu Rendite, Abschreibung und Ausstattung finden Sie im Exposé.</p>
       <div class="verkauf-ctas">
         <a href="assets/downloads/DienerHaus-Expose-Wohnung-18-Maximilianstrasse.pdf" target="_blank" rel="noopener" class="btn btn-primary">Exposé (PDF) herunterladen</a>
-        <a href="#kontakt" class="btn btn-dark">Anfrage stellen</a>
+        <a href="#kontakt" class="btn btn-dark js-objekt-anfrage" data-objekt="Wohnung Nr. 18 · Maximilianstraße 21–23, Jockgrim · 340.800 €" data-interesse="Kauf als Kapitalanlage" aria-label="Anfrage zu Wohnung Nr. 18, Maximilianstraße 21–23 stellen">Zu diesem Objekt anfragen</a>
       </div>
     </div>
   </div>
 
   <div class="verkauf-card">
-    <div class="verkauf-img lazy-bg" data-bg="assets/projekt-maximilianstrasse-we9-crop.jpg"></div>
+    <div class="verkauf-img lazy-bg" data-bg="assets/projekt-maximilianstrasse-we9-crop.jpg" role="img" aria-label="Wohnung Nr. 9, Maximilianstraße 21–23, Jockgrim"></div>
     <div class="verkauf-body">
       <div class="verkauf-status">ZUM VERKAUF · PROVISIONSFREI</div>
       <h3 class="verkauf-name">Wohnung Nr. 9</h3>
@@ -372,7 +366,7 @@
       <p class="verkauf-desc">Großzügige 3-Zimmer-Wohnung im Obergeschoss mit Balkon, Personenaufzug und Tiefgaragenstellplatz – seit November 2025 vermietet und damit eine funktionierende Kapitalanlage mit 4,0 % Bruttomietrendite ohne Erstvermietungsrisiko. Alle Details zu Rendite, Abschreibung und Ausstattung finden Sie im Exposé.</p>
       <div class="verkauf-ctas">
         <a href="assets/downloads/DienerHaus-Expose-Wohnung-9-Maximilianstrasse.pdf" target="_blank" rel="noopener" class="btn btn-primary">Exposé (PDF) herunterladen</a>
-        <a href="#kontakt" class="btn btn-dark">Anfrage stellen</a>
+        <a href="#kontakt" class="btn btn-dark js-objekt-anfrage" data-objekt="Wohnung Nr. 9 · Maximilianstraße 21–23, Jockgrim · 468.000 €" data-interesse="Kauf als Kapitalanlage" aria-label="Anfrage zu Wohnung Nr. 9, Maximilianstraße 21–23 stellen">Zu diesem Objekt anfragen</a>
       </div>
     </div>
   </div>
@@ -389,17 +383,17 @@
   </div>
   <div class="projekte-grid">
     <article class="projekt-card">
-      <div class="projekt-img lazy-bg" data-bg="assets/projekt-brahmsstrasse-ruelzheim.jpg"></div>
+      <div class="projekt-img lazy-bg" data-bg="assets/projekt-brahmsstrasse-ruelzheim.jpg" role="img" aria-label="Brahmsstraße, Rülzheim"></div>
       <div class="projekt-top">
         <span class="projekt-name">Brahmsstraße</span>
         <span class="projekt-status">IM BAU</span>
       </div>
       <div class="projekt-ort">Rülzheim</div>
       <div class="projekt-desc">6-Familienhaus, 500 m² Wohnfläche — aktuell im Bau.</div>
-      <a href="assets/downloads/DienerHaus-Bauqualitaet-Expose.pdf" target="_blank" rel="noopener" class="projekt-link">Exposé (PDF) →</a>
+      <a href="assets/downloads/DienerHaus-Bauqualitaet-Expose.pdf" target="_blank" rel="noopener" class="projekt-link">Bauqualität bei DienerHaus (PDF) →</a>
     </article>
     <article class="projekt-card">
-      <div class="projekt-img lazy-bg" data-bg="assets/projekt-maximilianstrasse-jockgrim-crop.jpg"></div>
+      <div class="projekt-img lazy-bg" data-bg="assets/projekt-maximilianstrasse-jockgrim-crop.jpg" role="img" aria-label="Maximilianstraße, Jockgrim"></div>
       <div class="projekt-top">
         <span class="projekt-name">Maximilianstraße</span>
         <span class="projekt-status">FERTIG</span>
@@ -410,47 +404,47 @@
       <a href="assets/downloads/DienerHaus-Expose-Maximilianstrasse-21-23.pdf" target="_blank" rel="noopener" class="projekt-link">Exposé (PDF) →</a>
     </article>
     <article class="projekt-card">
-      <div class="projekt-img lazy-bg" data-bg="assets/projekt-bismarckstrasse-2021.jpg"></div>
+      <div class="projekt-img lazy-bg" data-bg="assets/projekt-bismarckstrasse-2021.jpg" role="img" aria-label="Bismarckstraße, Jockgrim"></div>
       <div class="projekt-top">
         <span class="projekt-name">Bismarckstraße</span>
         <span class="projekt-status">FERTIG</span>
       </div>
       <div class="projekt-ort">Jockgrim</div>
       <div class="projekt-desc">5-Familienhaus, 380 m² Wohnfläche, Baujahr 2021.</div>
-      <a href="assets/downloads/DienerHaus-Bauqualitaet-Expose.pdf" target="_blank" rel="noopener" class="projekt-link">Exposé (PDF) →</a>
+      <a href="assets/downloads/DienerHaus-Bauqualitaet-Expose.pdf" target="_blank" rel="noopener" class="projekt-link">Bauqualität bei DienerHaus (PDF) →</a>
     </article>
     <article class="projekt-card">
-      <div class="projekt-img lazy-bg" data-bg="assets/projekt-eulenweg-2020.jpg"></div>
+      <div class="projekt-img lazy-bg" data-bg="assets/projekt-eulenweg-2020.jpg" role="img" aria-label="Eulenweg, Jockgrim"></div>
       <div class="projekt-top">
         <span class="projekt-name">Eulenweg</span>
         <span class="projekt-status">FERTIG</span>
       </div>
       <div class="projekt-ort">Jockgrim</div>
       <div class="projekt-desc">Stadtvilla mit 2 Wohneinheiten, 195 m² Wohnfläche, Baujahr 2020.</div>
-      <a href="assets/downloads/DienerHaus-Bauqualitaet-Expose.pdf" target="_blank" rel="noopener" class="projekt-link">Exposé (PDF) →</a>
+      <a href="assets/downloads/DienerHaus-Bauqualitaet-Expose.pdf" target="_blank" rel="noopener" class="projekt-link">Bauqualität bei DienerHaus (PDF) →</a>
     </article>
     <article class="projekt-card">
-      <div class="projekt-img lazy-bg" data-bg="assets/projekt-forstlandallee-19.jpg"></div>
+      <div class="projekt-img lazy-bg" data-bg="assets/projekt-forstlandallee-19.jpg" role="img" aria-label="Forstlandallee 19, Jockgrim"></div>
       <div class="projekt-top">
         <span class="projekt-name">Forstlandallee 19</span>
         <span class="projekt-status">FERTIG</span>
       </div>
       <div class="projekt-ort">Jockgrim</div>
       <div class="projekt-desc">2 Doppelhaushälften, je 160 m² Wohnfläche, Baujahr 2019.</div>
-      <a href="assets/downloads/DienerHaus-Bauqualitaet-Expose.pdf" target="_blank" rel="noopener" class="projekt-link">Exposé (PDF) →</a>
+      <a href="assets/downloads/DienerHaus-Bauqualitaet-Expose.pdf" target="_blank" rel="noopener" class="projekt-link">Bauqualität bei DienerHaus (PDF) →</a>
     </article>
     <article class="projekt-card">
-      <div class="projekt-img lazy-bg" data-bg="assets/projekt-forstlandallee-52.jpg"></div>
+      <div class="projekt-img lazy-bg" data-bg="assets/projekt-forstlandallee-52.jpg" role="img" aria-label="Forstlandallee 52, Jockgrim"></div>
       <div class="projekt-top">
         <span class="projekt-name">Forstlandallee 52</span>
         <span class="projekt-status">FERTIG</span>
       </div>
       <div class="projekt-ort">Jockgrim</div>
       <div class="projekt-desc">Stadtvilla als großzügiges Einfamilienhaus, Baujahr 2017.</div>
-      <a href="assets/downloads/DienerHaus-Bauqualitaet-Expose.pdf" target="_blank" rel="noopener" class="projekt-link">Exposé (PDF) →</a>
+      <a href="assets/downloads/DienerHaus-Bauqualitaet-Expose.pdf" target="_blank" rel="noopener" class="projekt-link">Bauqualität bei DienerHaus (PDF) →</a>
     </article>
     <article class="projekt-card">
-      <div class="projekt-img lazy-bg" data-bg="assets/projekt-franz-marc-ring-woerth.jpg"></div>
+      <div class="projekt-img lazy-bg" data-bg="assets/projekt-franz-marc-ring-woerth.jpg" role="img" aria-label="Franz-Marc-Ring, Wörth am Rhein"></div>
       <div class="projekt-top">
         <span class="projekt-name">Franz-Marc-Ring</span>
         <span class="projekt-status">FERTIG</span>
@@ -460,34 +454,34 @@
       <a href="assets/downloads/DienerHaus-Expose-Franz-Marc-Ring-15.pdf" target="_blank" rel="noopener" class="projekt-link">Exposé (PDF) →</a>
     </article>
     <article class="projekt-card">
-      <div class="projekt-img lazy-bg" data-bg="assets/projekt-roemerstrasse-ruelzheim.jpg"></div>
+      <div class="projekt-img lazy-bg" data-bg="assets/projekt-roemerstrasse-ruelzheim.jpg" role="img" aria-label="Römerstraße, Rülzheim"></div>
       <div class="projekt-top">
         <span class="projekt-name">Römerstraße</span>
         <span class="projekt-status">FERTIG</span>
       </div>
       <div class="projekt-ort">Rülzheim</div>
       <div class="projekt-desc">6 Wohneinheiten, 450 m² Wohnfläche, Baujahr 2016.</div>
-      <a href="assets/downloads/DienerHaus-Bauqualitaet-Expose.pdf" target="_blank" rel="noopener" class="projekt-link">Exposé (PDF) →</a>
+      <a href="assets/downloads/DienerHaus-Bauqualitaet-Expose.pdf" target="_blank" rel="noopener" class="projekt-link">Bauqualität bei DienerHaus (PDF) →</a>
     </article>
     <article class="projekt-card">
-      <div class="projekt-img lazy-bg" data-bg="assets/projekt-eisvogelstrasse.jpg"></div>
+      <div class="projekt-img lazy-bg" data-bg="assets/projekt-eisvogelstrasse.jpg" role="img" aria-label="Eisvogelstraße, Jockgrim"></div>
       <div class="projekt-top">
         <span class="projekt-name">Eisvogelstraße</span>
         <span class="projekt-status">FERTIG</span>
       </div>
       <div class="projekt-ort">Jockgrim</div>
       <div class="projekt-desc">2 Doppelhaushälften, 4 Wohneinheiten, 460 m² Wohnfläche, Baujahr 2014.</div>
-      <a href="assets/downloads/DienerHaus-Bauqualitaet-Expose.pdf" target="_blank" rel="noopener" class="projekt-link">Exposé (PDF) →</a>
+      <a href="assets/downloads/DienerHaus-Bauqualitaet-Expose.pdf" target="_blank" rel="noopener" class="projekt-link">Bauqualität bei DienerHaus (PDF) →</a>
     </article>
     <article class="projekt-card">
-      <div class="projekt-img lazy-bg" data-bg="assets/projekt-hagenbach-konrad-adenauer-ring.jpg"></div>
+      <div class="projekt-img lazy-bg" data-bg="assets/projekt-hagenbach-konrad-adenauer-ring.jpg" role="img" aria-label="Konrad-Adenauer-Ring, Hagenbach"></div>
       <div class="projekt-top">
         <span class="projekt-name">Konrad-Adenauer-Ring</span>
         <span class="projekt-status">FERTIG</span>
       </div>
       <div class="projekt-ort">Hagenbach</div>
       <div class="projekt-desc">4-Familienhaus, 450 m² Wohnfläche, Baujahr 2012.</div>
-      <a href="assets/downloads/DienerHaus-Bauqualitaet-Expose.pdf" target="_blank" rel="noopener" class="projekt-link">Exposé (PDF) →</a>
+      <a href="assets/downloads/DienerHaus-Bauqualitaet-Expose.pdf" target="_blank" rel="noopener" class="projekt-link">Bauqualität bei DienerHaus (PDF) →</a>
     </article>
   </div>
 </section>
@@ -587,7 +581,7 @@
   <div class="finanzierung-head">
     <div class="eyebrow eyebrow-dark">FINANZIERUNG &amp; FÖRDERUNG</div>
     <h2 class="h2-max640" id="finanzierung-title">Rechnen Sie Ihre Finanzierung durch</h2>
-    <p class="finanzierung-intro">Marktdurchschnitt aktuell: <strong>3,5–4,4&nbsp;%</strong> effektiver Jahreszins bei 10 Jahren Zinsbindung (Stand Juli 2026, unverbindliche Marktorientierung). Alle Werte dienen der ersten Orientierung und ersetzen keine Beratung.</p>
+    <p class="finanzierung-intro">Aktuelle Marktzinsen: etwa <strong>4,2–4,5&nbsp;%</strong> effektiver Jahreszins bei 10 Jahren Zinsbindung (Stand Oktober 2026, unverbindliche Marktorientierung; je nach Bank, Eigenkapital und Objekt abweichend). Alle Werte dienen der ersten Orientierung und ersetzen keine Beratung.</p>
     <a href="https://www.bundesbank.de/de/statistiken/geld-und-kapitalmaerkte/zinssaetze-und-renditen" target="_blank" rel="noopener" class="zins-link">Tagesaktuelle Bauzinsen abrufen (Deutsche Bundesbank) →</a>
   </div>
 
@@ -605,7 +599,7 @@
       <div class="calc-inline-2">
         <div>
           <label for="zinssatz">Sollzins (% p.a.)</label>
-          <input type="number" id="zinssatz" value="3.7" step="0.1" min="0">
+          <input type="number" id="zinssatz" value="4.3" step="0.1" min="0">
         </div>
         <div>
           <label for="tilgung">Anfangstilgung (%)</label>
@@ -647,7 +641,7 @@
           <button type="button" class="afa-btn" data-mode="bestand">Bestand (2 %)</button>
           <button type="button" class="afa-btn" data-mode="degressiv">Degressiv (5 %)</button>
         </div>
-        <p class="afa-note" id="afa-degressiv-note" hidden>Degressive AfA (5 %): für Neubauten mit Bauantrag/Baubeginn ab 1.10.2023, befristet auf die ersten 6 Jahre.</p>
+        <p class="afa-note" id="afa-degressiv-note" hidden>Degressive AfA (5 % vom Restwert): für Wohngebäude, mit deren Bau nach dem 30.09.2023 und vor dem 01.10.2029 begonnen wurde (maßgeblich ist der Baubeginn). Beim Kauf muss der Kaufvertrag in diesem Zeitraum geschlossen sein und der Kauf bis Ende des Fertigstellungsjahres erfolgen. Ein späterer Wechsel zur linearen AfA ist einmal möglich.</p>
         <label for="gebaeudeanteil">Gebäudeanteil am Kaufpreis (%)</label>
         <input type="number" id="gebaeudeanteil" value="70" min="0" max="100">
         <div class="calc-row calc-row-sep">
@@ -670,6 +664,7 @@
     <h2 id="kontakt-title">Sprechen Sie mit uns</h2>
     <p class="body-copy kontakt-intro">Ob Kaufinteresse, Kapitalanlage, Hausverwaltung oder ein Grundstück zum Verkauf — wir freuen uns auf Ihre Nachricht.</p>
     <div class="kontakt-details">
+      <div><span class="kontakt-label">Telefon: </span><a href="tel:+497271909090">07271 - 90 90 90</a></div>
       <div><span class="kontakt-label">E-Mail: </span><a href="mailto:info@dienerhaus.de">info@dienerhaus.de</a></div>
       <div><span class="kontakt-label">Adresse: </span><span class="kontakt-value">Luitpoldstraße 10, 76751 Jockgrim</span></div>
       <div><span class="kontakt-label">Instagram: </span><a href="https://www.instagram.com/dienerhaus/" target="_blank" rel="noopener">@dienerhaus</a></div>
@@ -681,13 +676,27 @@
     <iframe class="kontakt-map" id="kontakt-map-iframe" data-src="https://www.openstreetmap.org/export/embed.html?bbox=8.2692%2C49.0824%2C8.2892%2C49.1024&amp;layer=mapnik&amp;marker=49.0924%2C8.2792" loading="lazy" title="Standort DienerHaus, Luitpoldstraße 10, 76751 Jockgrim" hidden></iframe>
   </div>
   <div class="kontakt-form-card">
-    <form id="kontakt-form" class="kontakt-form">
-      <input type="text" placeholder="Name" name="name" required>
-      <input type="email" placeholder="E-Mail" name="email" required>
-      <textarea placeholder="Ihre Nachricht" name="message" rows="5" required></textarea>
+    <form id="kontakt-form" class="kontakt-form" data-subject="ANFRAGE STARTSEITE (über dienerhaus.de)" data-mail-subject="Anfrage über dienerhaus.de" novalidate>
+      <p class="form-legend">Felder mit * sind Pflichtfelder.</p>
+      <div class="field"><label for="kf-name">Name *</label><input id="kf-name" type="text" name="name" autocomplete="name" required aria-required="true"></div>
+      <div class="field"><label for="kf-email">E-Mail *</label><input id="kf-email" type="email" name="email" autocomplete="email" inputmode="email" required aria-required="true"></div>
+      <div class="field"><label for="kf-tel">Telefon (optional, für Rückruf)</label><input id="kf-tel" type="tel" name="telefon" autocomplete="tel" inputmode="tel" data-extra="Telefon"></div>
+      <div class="field"><label for="kf-interesse">Interesse an *</label>
+        <select id="kf-interesse" name="interesse" data-extra="Interesse an" required aria-required="true">
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="Kauf einer Immobilie / Wohnung (Eigennutzung)">Kauf einer Immobilie / Wohnung (Eigennutzung)</option>
+          <option value="Kauf als Kapitalanlage">Kauf als Kapitalanlage</option>
+          <option value="Hausverwaltung (WEG / Miete)">Hausverwaltung (WEG / Miete)</option>
+          <option value="Grundstück oder Bestandsimmobilie verkaufen">Grundstück oder Bestandsimmobilie verkaufen</option>
+          <option value="Neubau- / Sanierungsprojekt">Neubau- / Sanierungsprojekt</option>
+          <option value="Sonstiges">Sonstiges</option>
+        </select></div>
+      <div class="field"><label for="kf-objekt">Objekt (falls zutreffend)</label><input id="kf-objekt" type="text" name="objekt" data-extra="Objekt"></div>
+      <div class="field"><label for="kf-nachricht">Ihre Nachricht *</label><textarea id="kf-nachricht" name="message" rows="5" required minlength="10" aria-required="true"></textarea></div>
       <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button type="submit">Nachricht senden</button>
-      <p class="kontakt-form-status" id="kontakt-form-status" role="status" aria-live="polite"></p>
+      <p class="kontakt-form-note">Ihre Angaben verwenden wir ausschließlich zur Bearbeitung Ihrer Anfrage. Details in der <a href="/datenschutz">Datenschutzerklärung</a>.</p>
+      <button type="submit">Anfrage senden</button>
+      <div class="kontakt-form-status" id="kontakt-form-status" role="status" aria-live="polite" tabindex="-1"></div>
     </form>
   </div>
 </section>
@@ -697,7 +706,7 @@
   <div class="karriere-inner">
     <div class="eyebrow">KARRIERE</div>
     <h2 class="h2-md" id="karriere-title">Werden Sie Teil von DienerHaus</h2>
-    <p class="body-copy karriere-copy">Wir wachsen und suchen laufend engagierte Kolleginnen und Kollegen für Bauleitung, Vertrieb und Verwaltung. Aktuelle Stellenangebote folgen in Kürze.</p>
+    <p class="body-copy karriere-copy">Wir wachsen und suchen laufend engagierte Kolleginnen und Kollegen für Bauleitung, Vertrieb und Verwaltung. Initiativbewerbungen sind jederzeit willkommen.</p>
     <a href="mailto:info@dienerhaus.de?subject=Initiativbewerbung" class="btn btn-dark">Initiativbewerbung senden</a>
   </div>
 </section>
@@ -715,12 +724,12 @@
       <span>Luitpoldstraße 10, 76751 Jockgrim</span>
     </div>
     <div class="footer-links">
-      <a href="hausverwaltung.html">Hausverwaltung</a>
+      <a href="/hausverwaltung">Hausverwaltung</a>
       <a href="#karriere">Karriere</a>
-      <a href="vermieter-toolkit.html">Vermieter-Toolkit</a>
+      <a href="/vermieter-toolkit">Vermieter-Toolkit</a>
       <a href="https://steinundzins.de/" target="_blank" rel="noopener" title="Unser kostenloses Informationsportal zu Immobilien als Geldanlage">Stein &amp; Zins – Infoportal</a>
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
+      <a href="/impressum">Impressum</a>
+      <a href="/datenschutz">Datenschutz</a>
       <a href="https://www.instagram.com/dienerhaus/" target="_blank" rel="noopener">Instagram</a>
     </div>
   </div>

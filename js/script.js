@@ -66,10 +66,13 @@
   /* ---------- Hero video (only render if a real src is supplied) ---------- */
   var heroVideo = document.getElementById('hero-video');
   var heroPlaceholder = document.querySelector('.hero-placeholder-label');
-  var HERO_VIDEO_SRC = 'assets/hero-maximilianstrasse-wandel.mp4';
+  var HERO_VIDEO_SRC = 'assets/hero-maximilianstrasse-wandel-web.mp4';
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var saveData = navigator.connection && navigator.connection.saveData;
   if (heroVideo && HERO_VIDEO_SRC) {
-    heroVideo.src = HERO_VIDEO_SRC;
     heroVideo.style.display = 'block';
+    if (reduceMotion || saveData) { heroVideo.removeAttribute('autoplay'); heroVideo.preload = 'none'; }   // Standbild statt Video
+    else heroVideo.src = HERO_VIDEO_SRC;
     if (heroPlaceholder) heroPlaceholder.style.display = 'none';
   }
 
@@ -185,35 +188,98 @@
     return parts.join('\n\n');
   }
 
-  function openMailtoFallback() {
-    var name = encodeURIComponent(kontaktForm.name.value);
-    var email = encodeURIComponent(kontaktForm.email.value);
-    var message = encodeURIComponent(composeMessage());
+  var PHONE_TEL = 'tel:+497271909090', PHONE_TXT = '07271 - 90 90 90';
+
+  function mailtoHref() {
     var subject = encodeURIComponent(kontaktForm.getAttribute('data-mail-subject') || 'Kontaktanfrage von der Website');
-    var body = 'Name: ' + name + '%0D%0AE-Mail: ' + email + '%0D%0A%0D%0A' + message;
-    window.location.href = 'mailto:info@dienerhaus.de?subject=' + subject + '&body=' + body;
+    var body = 'Name: ' + kontaktForm.name.value + '\nE-Mail: ' + kontaktForm.email.value + '\n\n' + composeMessage();
+    return 'mailto:info@dienerhaus.de?subject=' + subject + '&body=' + encodeURIComponent(body);
   }
 
-  function setStatus(text, kind) {
+  function mailSubject() {
+    var base = kontaktForm.getAttribute('data-mail-subject') || 'Kontaktanfrage von der Website';
+    var objekt = kontaktForm.objekt ? (kontaktForm.objekt.value || '').trim() : '';
+    return objekt ? base + ' · ' + objekt : base;
+  }
+
+  /* Status-Kasten: Erfolg (role=status) oder Fehler (role=alert), Fokus auf die Meldung */
+  function showStatus(kind, html) {
     if (!kontaktStatus) return;
-    kontaktStatus.textContent = text;
     kontaktStatus.classList.remove('is-success', 'is-error');
-    if (kind) kontaktStatus.classList.add(kind);
+    kontaktStatus.classList.add(kind === 'success' ? 'is-success' : 'is-error');
+    kontaktStatus.setAttribute('role', kind === 'success' ? 'status' : 'alert');
+    kontaktStatus.innerHTML = html;
+    kontaktStatus.focus({ preventScroll: false });
+  }
+  function clearStatus() {
+    if (!kontaktStatus) return;
+    kontaktStatus.classList.remove('is-success', 'is-error');
+    kontaktStatus.textContent = '';
+  }
+
+  /* Feldvalidierung mit Fehlertext direkt unter dem Feld */
+  var FIELD_MSG = {
+    name: 'Bitte geben Sie Ihren Namen ein.',
+    email: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
+    interesse: 'Bitte wählen Sie aus, wofür Sie sich interessieren.',
+    message: 'Bitte schreiben Sie uns kurz, worum es geht (mindestens 10 Zeichen).'
+  };
+  function setFieldError(el, msg) {
+    var id = (el.id || el.name) + '-error';
+    var err = document.getElementById(id);
+    if (msg) {
+      if (!err) {
+        err = document.createElement('p');
+        err.id = id; err.className = 'field-error';
+        el.parentNode.appendChild(err);
+      }
+      err.textContent = msg;
+      el.setAttribute('aria-invalid', 'true');
+      el.setAttribute('aria-describedby', id);
+    } else {
+      if (err) err.remove();
+      el.removeAttribute('aria-invalid');
+      el.removeAttribute('aria-describedby');
+    }
+  }
+  function fieldValid(el) {
+    var v = (el.value || '').trim();
+    if (el.name === 'email') return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    if (el.name === 'message') return v.length >= 10;
+    return v.length > 0;
+  }
+  function validateForm() {
+    var firstBad = null;
+    kontaktForm.querySelectorAll('[required]').forEach(function (el) {
+      var ok = fieldValid(el);
+      setFieldError(el, ok ? '' : (FIELD_MSG[el.name] || 'Bitte füllen Sie dieses Feld aus.'));
+      if (!ok && !firstBad) firstBad = el;
+    });
+    if (firstBad) firstBad.focus();
+    return !firstBad;
   }
 
   if (kontaktForm) {
+    kontaktForm.querySelectorAll('input, select, textarea').forEach(function (el) {
+      el.addEventListener('input', function () { if (el.hasAttribute('aria-invalid') && fieldValid(el)) setFieldError(el, ''); });
+      el.addEventListener('change', function () { if (el.hasAttribute('aria-invalid') && fieldValid(el)) setFieldError(el, ''); });
+    });
+
     kontaktForm.addEventListener('submit', function (e) {
       e.preventDefault();
       var submitBtn = kontaktForm.querySelector('button[type="submit"]');
+      if (submitBtn && submitBtn.disabled) return;
+      clearStatus();
+      if (!validateForm()) return;
       var payload = {
         name: kontaktForm.name.value,
         email: kontaktForm.email.value,
         message: composeMessage(),
+        subject: mailSubject(),
         _hp: kontaktForm._hp.value
       };
-
-      if (submitBtn) submitBtn.disabled = true;
-      setStatus('Wird gesendet …', null);
+      var origLabel = submitBtn ? submitBtn.textContent : '';
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Wird gesendet …'; }
 
       fetch(KONTAKT_ENDPOINT, {
         method: 'POST',
@@ -226,18 +292,38 @@
         })
         .then(function (data) {
           if (!data || !data.ok) throw new Error('send_failed');
-          setStatus('Danke für Ihre Nachricht! Wir melden uns zeitnah bei Ihnen.', 'is-success');
           kontaktForm.reset();
+          showStatus('success', '<strong>Vielen Dank, Ihre Anfrage ist bei uns eingegangen.</strong> Wir melden uns persönlich bei Ihnen. Eilig? Rufen Sie uns an: <a href="' + PHONE_TEL + '">' + PHONE_TXT + '</a>.');
         })
         .catch(function () {
-          setStatus('Senden nicht möglich — es öffnet sich stattdessen Ihr E-Mail-Programm.', 'is-error');
-          openMailtoFallback();
+          showStatus('error', '<strong>Die Anfrage konnte leider nicht gesendet werden.</strong> Ihre Eingaben sind erhalten geblieben. Bitte versuchen Sie es erneut, schreiben Sie uns per <a href="' + mailtoHref() + '">E-Mail</a> oder rufen Sie uns an: <a href="' + PHONE_TEL + '">' + PHONE_TXT + '</a>.');
         })
         .finally(function () {
-          if (submitBtn) submitBtn.disabled = false;
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = origLabel; }
         });
     });
   }
+
+  /* ---------- Objektkarten: „Anfrage stellen“ befüllt Objekt und Interesse im Formular ---------- */
+  document.querySelectorAll('.js-objekt-anfrage').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      var form = document.getElementById('kontakt-form');
+      if (!form) return;                                  // ohne Formular: normaler Anker
+      e.preventDefault();
+      var objekt = btn.getAttribute('data-objekt') || '';
+      var interesse = btn.getAttribute('data-interesse') || '';
+      if (form.objekt) form.objekt.value = objekt;
+      if (interesse && form.interesse) { form.interesse.value = interesse; setFieldError(form.interesse, ''); }
+      if (form.message && !form.message.value.trim()) {
+        form.message.value = 'Ich interessiere mich für: ' + objekt + '. Bitte senden Sie mir weitere Informationen bzw. einen Besichtigungstermin.';
+      }
+      var kontakt = document.getElementById('kontakt');
+      if (kontakt) kontakt.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      var target = Array.prototype.find.call(form.querySelectorAll('[required]'), function (el) { return !(el.value || '').trim(); }) || form.message;
+      setTimeout(function () { if (target) target.focus({ preventScroll: true }); }, 450);
+      if (history.replaceState) history.replaceState(null, '', '#kontakt');
+    });
+  });
 
   /* ---------- Testimonial "read full review" modal ---------- */
   var testimonialOverlay = document.getElementById('testimonial-modal-overlay');
