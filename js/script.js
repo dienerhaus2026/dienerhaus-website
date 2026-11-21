@@ -325,6 +325,18 @@
     });
   });
 
+  /* ---------- Aus dem Spiel „Baustellen-Chef“ (/spiel): ?anfrage=spiel#kontakt befüllt das Formular vor ---------- */
+  (function () {
+    var form = document.getElementById('kontakt-form');
+    if (!form || !/[?&]anfrage=spiel(&|$)/.test(location.search)) return;
+    if (form.objekt) form.objekt.value = 'Anfrage über das Spiel „Baustellen-Chef“';
+    if (form.interesse) { form.interesse.value = 'Neubau- / Sanierungsprojekt'; setFieldError(form.interesse, ''); }
+    if (form.message && !form.message.value.trim()) {
+      form.message.value = 'Ich habe das Spiel „Baustellen-Chef“ gespielt und interessiere mich für ein eigenes Bauprojekt. Bitte melden Sie sich bei mir.';
+    }
+    if (history.replaceState) history.replaceState(null, '', location.pathname + '#kontakt');
+  })();
+
   /* ---------- Testimonial "read full review" modal ---------- */
   var testimonialOverlay = document.getElementById('testimonial-modal-overlay');
   var testimonialBody = document.getElementById('testimonial-modal-body');

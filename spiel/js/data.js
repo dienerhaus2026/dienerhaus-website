@@ -60,7 +60,7 @@ export const GEWERKE = [
     id: 'inn', name: 'Innenausbau & Putz (Estrich, Fliesen, Böden, Maler)', kurz: 'Innenausbau', kosten: 84000, mat: 0.4,
     dauer: 7, std: 2, liefer: 2, draussen: false, kran: false, nach: ['ins'],
     icon: 'M4 20V9l8-5 8 5v11M9 20v-6h6v6',
-    tipp: 'Estrich braucht Zeit: Als Faustregel rechnet man bei Zementestrich etwa eine Woche Trocknung je Zentimeter Dicke.',
+    tipp: 'Estrich braucht Zeit: Als grobe Faustregel gilt bei Zementestrich bis etwa 4 cm rund eine Woche Trocknung je Zentimeter, bei dickerem Estrich deutlich mehr. Belegt wird erst, wenn eine Messung die Belegreife bestätigt; bei Fußbodenheizung kommt das Belegreifheizen hinzu.',
   },
   {
     id: 'aus', name: 'Außenanlagen (Zufahrt, Terrasse, Garten)', kurz: 'Außenanlagen', kosten: 21000, mat: 0.45,
@@ -80,4 +80,4 @@ export const FIRMEN = {
 export const ZEIT_STERNE = [23, 26, 30]; // ≤ → 3/2/1 Sterne
 export const QUALI_STERNE = [90, 75, 55];
 
-export const KONTAKT_URL = '/#kontakt';
+export const KONTAKT_URL = '/?anfrage=spiel#kontakt'; // öffnet das vorbelegte Kontaktformular der Startseite

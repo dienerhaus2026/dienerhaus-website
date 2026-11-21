@@ -227,8 +227,8 @@ function evKran(s) {
 
 function evBoden(s) {
   return {
-    id: 'boden', bild: 'boden', titel: 'Schlechtes Bodengutachten', text: 'Beim Aushub zeigt sich: Unter der Grasnarbe liegt eine weiche Lehmschicht. Laut Gutachter trägt der Boden die Bodenplatte so nicht.',
-    lehre: 'Der Baugrund ist das größte unsichtbare Risiko – deshalb gehört ein Bodengutachten vor jede Planung.',
+    id: 'boden', bild: 'boden', titel: 'Überraschung im Baugrund', text: 'Beim Aushub zeigt sich zwischen den Bohrpunkten des Bodengutachtens eine weiche Lehmschicht. Laut Gutachter trägt der Boden die Bodenplatte so nicht.',
+    lehre: 'Der Baugrund ist das größte unsichtbare Risiko – deshalb gehört ein Bodengutachten vor jede Planung und ein Puffer für den Baugrund ins Budget.',
     optionen: [
       { label: 'Bodenaustausch mit Schotter', info: '8.000 € · +1 Woche', aktion: () => { zahle(s, 8000, null, 'erd'); s.g.erd.fortschritt = Math.max(0, s.g.erd.fortschritt - 1 / GW.erd.dauer); log(s, 'Bodenaustausch: 8.000 €, +1 Woche.', 'schlecht'); } },
       { label: 'Verstärkte Bodenplatte', info: '11.500 € · kein Zeitverlust', aktion: () => { zahle(s, 11500, null, 'erd'); log(s, 'Verstärkte Bodenplatte nach neuer Statik: 11.500 €.', 'schlecht'); } },
@@ -307,7 +307,7 @@ function evMangel(s, id) {
   const minderung = rund((st.lohn + st.mat) * 0.05);
   return {
     id: 'mangel', bild: 'mangel', titel: `Mängel bei der Abnahme: ${GW[id].kurz}`, text: MANGEL_TEXT[id] + (st.firma === 'guenstig' ? ' Der günstige Subunternehmer hat gepfuscht.' : ''),
-    lehre: 'Bei der Abnahme genau hinschauen lohnt sich: Danach muss der Bauherr Mängel selbst beweisen.',
+    lehre: 'Bei der Abnahme genau hinschauen lohnt sich: Erkannte Mängel gehören ins Abnahmeprotokoll, sonst können Rechte verloren gehen. Und nach der Abnahme muss in der Regel der Bauherr beweisen, dass ein Mangel vorliegt.',
     optionen: [
       { label: 'Nachbessern lassen', info: `Firma zahlt · +${wochen} Woche${wochen > 1 ? 'n' : ''}`, aktion: () => { st.status = 'nacharbeit'; st.nacharbeit = wochen; log(s, `${GW[id].kurz}: Nacharbeit angeordnet (+${wochen} Wo.).`, 'schlecht'); } },
       { label: 'Preisminderung, so lassen', info: `−${eur(minderung)} · Qualität sinkt deutlich`, aktion: () => { st.status = 'fertig'; zahle(s, -minderung, null, id); s.quali -= 10; log(s, `${GW[id].kurz}: Mangel akzeptiert, Minderung ${eur(minderung)}.`, 'schlecht'); } },
@@ -319,11 +319,11 @@ function evEstrich(s) {
   // übersprungene Trocknungszeit ist kein gesparter Lohn – die Arbeit danach muss trotzdem gemacht werden
   const lohnFuer = (anteil) => { const st = s.g.inn; zahle(s, anteil * lohnGesamt(GW.inn, st.trupps, st.firma), null, 'inn', 'lohn'); };
   return {
-    id: 'estrich', bild: 'estrich', titel: 'Der Estrich ist drin', text: 'Der Zementestrich liegt. Jetzt muss er trocknen, bevor Fliesen und Parkett darauf dürfen. Der Plan sieht zwei Wochen Trocknung vor.',
+    id: 'estrich', bild: 'estrich', titel: 'Der Estrich ist drin', text: 'Der Zementestrich liegt. Jetzt muss er trocknen, bevor Fliesen und Parkett darauf dürfen. Im Spiel ist die Trocknung stark verkürzt: Der Plan sieht noch zwei Wochen Wartezeit vor (in der Realität oft 6 Wochen und mehr).',
     lehre: 'Zeit gegen Sicherheit: Wer Trocknungszeiten abkürzt, riskiert Feuchteschäden, die viel teurer sind als jede Woche Wartezeit.',
     optionen: [
       { label: 'Normal trocknen lassen', info: '0 € · sicher', aktion: () => log(s, 'Estrich trocknet nach Plan.') },
-      { label: 'Bautrockner mieten', info: '1.400 € · −1 Woche · sicher', aktion: () => { zahle(s, 1400, null, 'inn'); lohnFuer(1 / GW.inn.dauer); s.g.inn.fortschritt = Math.min(0.99, s.g.inn.fortschritt + 1 / GW.inn.dauer); log(s, 'Bautrockner gemietet (1.400 €), eine Woche gespart.'); } },
+      { label: 'Bautrockner mieten', info: '1.400 € · −1 Woche · Belegreife wird gemessen', aktion: () => { zahle(s, 1400, null, 'inn'); lohnFuer(1 / GW.inn.dauer); s.g.inn.fortschritt = Math.min(0.99, s.g.inn.fortschritt + 1 / GW.inn.dauer); log(s, 'Bautrockner gemietet (1.400 €), eine Woche gespart.'); } },
       { label: 'Sofort weiterarbeiten', info: '0 € · −2 Wochen · Risiko Feuchteschaden', aktion: () => { s.flags.feuchteRisiko = true; lohnFuer(2 / GW.inn.dauer); s.g.inn.fortschritt = Math.min(0.99, s.g.inn.fortschritt + 2 / GW.inn.dauer); log(s, 'Estrich nicht ausgetrocknet – es wird weitergearbeitet.', 'schlecht'); } },
     ],
   };

@@ -395,6 +395,7 @@ $('#btn-hilfe').addEventListener('click', () => {
       <li>Am Ende gibt es <b>Sterne</b> für Zeit, Kosten und Qualität.</li>
     </ol>
     <p class="hinweis-klein">Spielwerte, kein Angebot. Keine Cookies, kein Tracking – das Spiel läuft komplett in deinem Browser.</p>
+    <p class="hinweis-klein">Verwendet three.js (MIT-Lizenz) und die Schrift Fraunces (SIL Open Font License 1.1) – <a href="js/vendor/LICENSE-three.txt" target="_blank" rel="noopener">Lizenz three.js</a> · <a href="assets/fonts/OFL.txt" target="_blank" rel="noopener">Lizenz Fraunces</a>.</p>
     <div class="aktionen"><button class="btn" id="ok">Weiterbauen</button></div>`);
   $('#ok').addEventListener('click', () => { schliesseModal(); render(); });
 });
