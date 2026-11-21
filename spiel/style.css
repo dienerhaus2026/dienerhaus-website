@@ -207,4 +207,8 @@ table.liste td:not(:first-child), table.liste th:not(:first-child) { white-space
 .sterne b { white-space: nowrap; }
 @media (max-width: 860px) { .sterne b { font-size: 14px; } table.liste th, table.liste td { padding: 5px 3px; } }
 
+.puls { animation: puls 1.6s ease-in-out infinite; }
+@keyframes puls { 0%, 100% { box-shadow: 0 0 0 0 rgba(187,74,44,0.55); } 50% { box-shadow: 0 0 0 6px rgba(187,74,44,0); } }
+.tipp .btn { margin: 6px 6px 0 0; }
+
 .fuss a { color: inherit; }

@@ -87,7 +87,7 @@ function renderTipp(p) {
   const t = $('#tipp');
   if (s.fertig) { t.innerHTML = ''; return; }
   const startbar = GEWERKE.filter((g) => G.kannStarten(s, g.id));
-  if (startbar.length) { t.innerHTML = `<b>Tipp</b><span>Du kannst jetzt <strong>${startbar.map((g) => g.kurz).join(' und ')}</strong> beauftragen.</span>`; return; }
+  if (startbar.length) { t.innerHTML = `<b>Jetzt</b><span>Material ist da – erst mit einem Auftrag wird gebaut. ${startbar.map((g) => `<button class="btn btn-klein puls" data-start="${g.id}">${g.kurz} beauftragen</button>`).join(' ')}</span>`; return; }
   // Bestellen nötig?
   for (const g of GEWERKE) {
     const st = s.g[g.id];
@@ -130,7 +130,7 @@ function renderAblauf(p) {
         mat = `<div class="zeile"><span class="warn-t">Material unterwegs – Lieferung Woche ${st.bestellt.ankunft}</span></div>`;
       } else mat = `<div class="zeile"><span class="ok">✓ Material ist da</span></div>`;
       const start = `<div class="zeile"><span class="muted">${fehlt.length ? 'Wartet auf: ' + fehlt.join(', ') : 'Vorarbeiten erledigt'}</span><span class="spacer"></span>
-        <button class="btn btn-klein" data-start="${g.id}" ${G.kannStarten(s, g.id) ? '' : 'disabled'}>Beauftragen</button></div>`;
+        <button class="btn btn-klein ${G.kannStarten(s, g.id) ? 'puls' : ''}" data-start="${g.id}" ${G.kannStarten(s, g.id) ? '' : 'disabled'}>Beauftragen</button></div>`;
       koerper = mat + start;
     } else if (st.status === 'laeuft') {
       const rate = G.tempo(g, st.trupps, st.firma);
@@ -198,8 +198,21 @@ $('#tab-ablauf').addEventListener('click', (e) => {
   else if (b.dataset.tr) { const st = s.g[b.dataset.tr]; G.setzeTrupps(s, b.dataset.tr, st.trupps + Number(b.dataset.d)); szeneSync(); render(); }
 });
 
+$('#tipp').addEventListener('click', (e) => { const b = e.target.closest('[data-start]'); if (b) firmenDialog(b.dataset.start); });
+
 $('#btn-woche').addEventListener('click', () => {
   if (!s || s.fertig || modalOffen) return;
+  const laeuft = GEWERKE.some((g) => ['laeuft', 'nacharbeit'].includes(s.g[g.id].status));
+  const startbar = GEWERKE.filter((g) => G.kannStarten(s, g.id));
+  if (!laeuft && startbar.length) {
+    oeffneModal(`<div class="eyebrow">Achtung</div><h2 id="modal-titel">Auf der Baustelle arbeitet niemand!</h2>
+      <p>Das Material für <b>${startbar.map((g) => g.kurz).join(' und ')}</b> ist da – aber noch keine Firma beauftragt. Ohne Auftrag wächst das Haus nicht, die Woche kostet trotzdem Geld (Baustelle und Zinsen).</p>
+      <div class="optionen">${startbar.map((g) => `<button class="option" data-jetzt="${g.id}"><b>${g.kurz} jetzt beauftragen</b><small>Firma und Trupps wählen</small></button>`).join('')}
+      <button class="option" id="trotzdem"><b>Trotzdem eine Woche warten</b><small>kostet ca. ${eur(LEVEL.baustelleProWoche + (s.ausgegeben * LEVEL.zinsSatz) / 52)}</small></button></div>`);
+    $('#modal-inhalt').querySelectorAll('[data-jetzt]').forEach((b) => b.addEventListener('click', () => { schliesseModal(); firmenDialog(b.dataset.jetzt); }));
+    $('#trotzdem').addEventListener('click', () => { schliesseModal(); G.endeWoche(s); nachWoche(); });
+    return;
+  }
   G.endeWoche(s);
   nachWoche();
 });
@@ -300,7 +313,7 @@ function intro() {
     </div>
     <ol class="schritte">
       <li><b>Material bestellen</b> – mit Lieferzeit. Fenster brauchen Wochen!</li>
-      <li><b>Gewerke beauftragen</b> – in der richtigen Reihenfolge, Firma und Trupps wählen.</li>
+      <li><b>Beauftragen</b> – ist das Material da, auf „Beauftragen“ tippen und eine Firma wählen. <b>Erst dann wird gebaut!</b></li>
       <li><b>Woche beenden</b> – dann wird gebaut, bezahlt und es passiert etwas.</li>
       <li><b>Entscheiden</b> – Regen, Lieferverzug, Wünsche der Bauherren …</li>
     </ol>
